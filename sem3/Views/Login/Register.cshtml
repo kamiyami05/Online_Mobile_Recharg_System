@@ -1,0 +1,59 @@
+﻿@model sem3.Models.ModelViews.Register
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="auth-container">
+    <h2>Register</h2>
+
+    @using (Html.BeginForm("Register", "Login", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(false, "", new { @class = "text-red-500" })
+
+        <div class="form-group">
+            <label for="FullName">Full Name</label>
+            @Html.TextBoxFor(m => m.FullName, new { @class = "form-control", placeholder = "Enter your full name", required = "required" })
+            @Html.ValidationMessageFor(m => m.FullName, "", new { @class = "text-red-500" })
+        </div>
+
+        <div class="form-group">
+            <label for="Phone">Phone</label>
+            @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", placeholder = "Enter your phone number", required = "required" })
+            @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-red-500" })
+        </div>
+
+        <div class="form-group">
+            <label for="Email">Email</label>
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email", placeholder = "Enter your email", required = "required" })
+            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-red-500" })
+        </div>
+
+        <div class="form-group">
+            <label for="Password">Password</label>
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Enter your password", required = "required" })
+            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-red-500" })
+        </div>
+
+        <div class="form-group">
+            <label for="ConfirmPassword">Confirm Password</label>
+            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm your password", required = "required" })
+            @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-red-500" })
+        </div>
+
+        <div class="form-group">
+            <label for="Address">Address (optional)</label>
+            @Html.TextBoxFor(m => m.Address, new { @class = "form-control", placeholder = "Enter your address" })
+            @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-red-500" })
+        </div>
+
+        <button type="submit" class="btn btn-primary">Register</button>
+
+        <div class="link">
+            <p>Already have an account? <a href="@Url.Action("Login", "Login")">Login here</a></p>
+        </div>
+    }
+</div>

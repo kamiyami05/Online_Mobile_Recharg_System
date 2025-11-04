@@ -1,0 +1,32 @@
+﻿@model sem3.Models.ModelViews.Login
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="auth-container">
+    <h2>Login</h2>
+
+    @Html.ValidationSummary(false, "", new { @class = "text-red-500" })
+
+    <form method="post" action="@Url.Action("Login", "Login")">
+        <div class="form-group">
+            <label for="Email">Email</label>
+            <input type="email" id="Email" name="Email" value="@Model.Email" placeholder="Enter your email" required />
+            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-red-500" })
+        </div>
+
+        <div class="form-group">
+            <label for="Password">Password</label>
+            <input type="password" id="Password" name="Password" placeholder="Enter your password" required />
+            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-red-500" })
+        </div>
+
+        <button type="submit" class="btn">Login</button>
+
+        <div class="link">
+            <p>Don't have an account? <a href="@Url.Action("Register", "Login")">Register now</a></p>
+        </div>
+    </form>
+</div>

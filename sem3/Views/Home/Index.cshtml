@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="home-container" style="text-align:center; margin-top:50px;">
+    <h1>Welcome to Online Mobile Recharge System</h1>
+
+    @if (ViewBag.CurrentUser == null)
+    {
+        <p>You are browsing as a guest.</p>
+        <p>
+            <a href="@Url.Action("Login", "Login")" class="btn btn-primary">Login</a> or
+            <a href="@Url.Action("Register", "Login")" class="btn btn-success">Register</a>
+        </p>
+    }
+    else
+    {
+        var user = ViewBag.CurrentUser as sem3.Models.ModelViews.UserM;
+        <p>Hello, <strong>@user.FullName</strong>!</p>
+        <p>Your role: @user.Role</p>
+        <a href="@Url.Action("Logout", "Login")" class="btn btn-danger">Logout</a>
+    }
+</div>

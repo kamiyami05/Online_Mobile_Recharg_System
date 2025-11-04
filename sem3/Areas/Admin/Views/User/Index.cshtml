@@ -1,0 +1,279 @@
+﻿@model List<sem3.Models.Entities.User>
+
+@{
+    ViewBag.Title = "User Management";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#createModal">
+    <i class="fas fa-plus"></i> Add New User
+</button>
+
+<table class="table table-striped table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>ID</th>
+            <th>Full Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Role</th>
+            <th>Address</th>
+            <th>Created At</th>
+            <th>Active</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.Id</td>
+                    <td>@user.FullName</td>
+                    <td>@user.Phone</td>
+                    <td>@user.Email</td>
+                    <td>@user.Role</td>
+                    <td>@user.Address</td>
+                    <td>@(user.CreatedAt.HasValue ? user.CreatedAt.Value.ToString("yyyy-MM-dd HH:mm") : "")</td>
+                    <td>@(user.IsActive == true ? "Active" : "Inactive")</td>
+                    <td>
+                        <button type="button" class="btn btn-warning btn-sm edit-btn" data-toggle="modal" data-target="#editModal"
+                                data-id="@user.Id"
+                                data-fullname="@user.FullName"
+                                data-phone="@user.Phone"
+                                data-email="@user.Email"
+                                data-role="@user.Role"
+                                data-address="@user.Address"
+                                data-active="@user.IsActive">
+                            <i class="fas fa-edit"></i> Edit
+                        </button>
+                        <button type="button" class="btn btn-danger btn-sm delete-btn" data-id="@user.Id">
+                            <i class="fas fa-trash"></i> Delete
+                        </button>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="10" class="text-center">No users found.</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Create Modal -->
+<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createModalLabel">Add New User</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="createForm" method="post">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" class="form-control" id="createFullName" name="FullName" required maxlength="100" />
+                    </div>
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="text" class="form-control" id="createPhone" name="Phone" required maxlength="10" />
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" class="form-control" id="createEmail" name="Email" required maxlength="100" />
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" class="form-control" id="createPassword" name="Password" required maxlength="100" />
+                    </div>
+                    <div class="form-group">
+                        <label>Role</label>
+                        <select class="form-control" id="createRole" name="Role">
+                            <option value="User">User</option>
+                            <option value="Admin">Admin</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Address</label>
+                        <input type="text" class="form-control" id="createAddress" name="Address" maxlength="255" />
+                    </div>
+                    <div class="form-group">
+                        <label>Active</label>
+                        <select class="form-control" id="createIsActive" name="IsActive">
+                            <option value="true">Active</option>
+                            <option value="false">Inactive</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="saveCreate">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Edit User</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="editForm">
+                    <input type="hidden" id="editId" name="Id" />
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" class="form-control" id="editFullName" name="FullName" required maxlength="100" />
+                    </div>
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="text" class="form-control" id="editPhone" name="Phone" required maxlength="10" />
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" class="form-control" id="editEmail" name="Email" required maxlength="100" />
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" class="form-control" id="editPassword" name="Password" maxlength="100" />
+                    </div>
+                    <div class="form-group">
+                        <label>Role</label>
+                        <select class="form-control" id="editRole" name="Role">
+                            <option value="User">User</option>
+                            <option value="Admin">Admin</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Address</label>
+                        <input type="text" class="form-control" id="editAddress" name="Address" maxlength="255" />
+                    </div>
+                    <div class="form-group">
+                        <label>Active</label>
+                        <select class="form-control" id="editIsActive" name="IsActive">
+                            <option value="true">Active</option>
+                            <option value="false">Inactive</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="saveEdit">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section myscript {
+    <script type="text/javascript">
+$(document).ready(function () {
+    $('#saveCreate').click(function (e) {
+        e.preventDefault();
+        var formData = {
+            FullName: $('#createFullName').val(),
+            Phone: $('#createPhone').val(),
+            Email: $('#createEmail').val(),
+            Password: $('#createPassword').val(),
+            Role: $('#createRole').val(),
+            Address: $('#createAddress').val(),
+            IsActive: $('#createIsActive').val()
+        };
+
+        $.ajax({
+            url: '@Url.Action("Create", "User", new { area = "Admin" })',
+            type: 'POST',
+            data: formData,
+            success: function (response) {
+                if (response.success) {
+                    $('#createModal').modal('hide');
+                    $('#createForm')[0].reset();
+                    location.reload();
+                } else {
+                    alert('Create failed: ' + response.message);
+                }
+            },
+            error: function (xhr, status, error) {
+                alert('Error: ' + error);
+            }
+        });
+    });
+
+    $('.edit-btn').click(function () {
+        $('#editId').val($(this).data('id'));
+        $('#editFullName').val($(this).data('fullname'));
+        $('#editPhone').val($(this).data('phone'));
+        $('#editEmail').val($(this).data('email'));
+        $('#editPassword').val($(this).data('password'));
+        $('#editRole').val($(this).data('role'));
+        $('#editAddress').val($(this).data('address'));
+        $('#editIsActive').val($(this).data('active').toString().toLowerCase());
+    });
+
+    $('#saveEdit').click(function (e) {
+        e.preventDefault();
+        var formData = {
+            Id: $('#editId').val(),
+            FullName: $('#editFullName').val(),
+            Phone: $('#editPhone').val(),
+            Email: $('#editEmail').val(),
+            Password: $('#editPassword').val(),
+            Role: $('#editRole').val(),
+            Address: $('#editAddress').val(),
+            IsActive: $('#editIsActive').val()
+        };
+
+        $.ajax({
+            url: '@Url.Action("Edit", "User", new { area = "Admin" })',
+            type: 'POST',
+            data: formData,
+            success: function (response) {
+                if (response.success) {
+                    $('#editModal').modal('hide');
+                    location.reload();
+                } else {
+                    alert('Update failed: ' + response.message);
+                }
+            },
+            error: function (xhr, status, error) {
+                alert('Error: ' + error);
+            }
+        });
+    });
+
+    $('.delete-btn').click(function () {
+        if (confirm('Are you sure you want to delete this user?')) {
+            var id = $(this).data('id');
+            $.ajax({
+                url: '@Url.Action("Delete", "User", new { area = "Admin" })',
+                type: 'POST',
+                data: { id: id },
+                success: function (response) {
+                    if (response.success) {
+                        location.reload();
+                    } else {
+                        alert('Delete failed: ' + response.message);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    alert('Error: ' + error);
+                }
+            });
+        }
+    });
+});
+    </script>
+}
