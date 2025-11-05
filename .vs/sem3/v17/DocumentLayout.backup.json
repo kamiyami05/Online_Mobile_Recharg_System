@@ -7,16 +7,32 @@
       "RelativeMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|solutionrelative:sem3\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|d:\\asp\\sem3\\sem3\\content\\client\\layout.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|solutionrelative:sem3\\content\\client\\layout.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|d:\\asp\\sem3\\sem3\\views\\recharge\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|solutionrelative:sem3\\views\\recharge\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|d:\\asp\\sem3\\sem3\\app_start\\bundleconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|solutionrelative:sem3\\app_start\\bundleconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|D:\\asp\\sem3\\sem3\\Views\\Home\\Index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|solutionrelative:sem3\\Views\\Home\\Index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|d:\\asp\\sem3\\sem3\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|solutionrelative:sem3\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|d:\\asp\\sem3\\sem3\\views\\customercare\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|solutionrelative:sem3\\views\\customercare\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|d:\\asp\\sem3\\sem3\\controllers\\customercarecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|solutionrelative:sem3\\controllers\\customercarecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|d:\\asp\\sem3\\sem3\\controllers\\contactuscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|solutionrelative:sem3\\controllers\\contactuscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|D:\\asp\\sem3\\sem3\\App_Start\\BundleConfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|solutionrelative:sem3\\App_Start\\BundleConfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|D:\\asp\\sem3\\sem3\\Content\\Client\\Layout.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|solutionrelative:sem3\\Content\\Client\\Layout.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,8 +42,60 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 4,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\asp\\sem3\\sem3\\Views\\Recharge\\Index.cshtml",
+              "RelativeDocumentMoniker": "sem3\\Views\\Recharge\\Index.cshtml",
+              "ToolTip": "D:\\asp\\sem3\\sem3\\Views\\Recharge\\Index.cshtml",
+              "RelativeToolTip": "sem3\\Views\\Recharge\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-05T11:47:14.174Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\asp\\sem3\\sem3\\Views\\CustomerCare\\Index.cshtml",
+              "RelativeDocumentMoniker": "sem3\\Views\\CustomerCare\\Index.cshtml",
+              "ToolTip": "D:\\asp\\sem3\\sem3\\Views\\CustomerCare\\Index.cshtml",
+              "RelativeToolTip": "sem3\\Views\\CustomerCare\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-05T11:44:55.826Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CustomerCareController.cs",
+              "DocumentMoniker": "D:\\asp\\sem3\\sem3\\Controllers\\CustomerCareController.cs",
+              "RelativeDocumentMoniker": "sem3\\Controllers\\CustomerCareController.cs",
+              "ToolTip": "D:\\asp\\sem3\\sem3\\Controllers\\CustomerCareController.cs",
+              "RelativeToolTip": "sem3\\Controllers\\CustomerCareController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T11:44:48.207Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ContactUsController.cs",
+              "DocumentMoniker": "D:\\asp\\sem3\\sem3\\Controllers\\ContactUsController.cs",
+              "RelativeDocumentMoniker": "sem3\\Controllers\\ContactUsController.cs",
+              "ToolTip": "D:\\asp\\sem3\\sem3\\Controllers\\ContactUsController.cs",
+              "RelativeToolTip": "sem3\\Controllers\\ContactUsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T11:43:38.908Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -36,27 +104,27 @@
               "RelativeDocumentMoniker": "sem3\\Views\\Shared\\_Layout.cshtml",
               "ToolTip": "D:\\asp\\sem3\\sem3\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "sem3\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAADAAAAAAAAAAAAAAAD4AAAAWAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-11-05T10:22:46.526Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\asp\\sem3\\sem3\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "sem3\\Views\\Home\\Index.cshtml",
               "ToolTip": "D:\\asp\\sem3\\sem3\\Views\\Home\\Index.cshtml",
               "RelativeToolTip": "sem3\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-11-05T10:20:12.347Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "BundleConfig.cs",
               "DocumentMoniker": "D:\\asp\\sem3\\sem3\\App_Start\\BundleConfig.cs",
               "RelativeDocumentMoniker": "sem3\\App_Start\\BundleConfig.cs",
@@ -64,12 +132,11 @@
               "RelativeToolTip": "sem3\\App_Start\\BundleConfig.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-05T10:17:07.27Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-05T10:17:07.27Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
               "Title": "Layout.css",
               "DocumentMoniker": "D:\\asp\\sem3\\sem3\\Content\\Client\\Layout.css",
               "RelativeDocumentMoniker": "sem3\\Content\\Client\\Layout.css",
@@ -77,8 +144,7 @@
               "RelativeToolTip": "sem3\\Content\\Client\\Layout.css",
               "ViewState": "AgIAADEAAAAAAAAAAAAgwHQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-11-05T10:07:49.298Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-05T10:07:49.298Z"
             }
           ]
         }
