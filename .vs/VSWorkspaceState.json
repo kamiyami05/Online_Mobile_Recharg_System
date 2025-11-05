@@ -6,7 +6,9 @@
     "\\sem3\\Areas\\Admin",
     "\\sem3\\Areas\\Admin\\Controllers",
     "\\sem3\\Areas\\Admin\\Views",
-    "\\sem3\\Areas\\Admin\\Views\\User"
+    "\\sem3\\Areas\\Admin\\Views\\User",
+    "\\sem3\\Views",
+    "\\sem3\\Views\\Home"
   ],
   "SelectedNode": "\\sem3.sln",
   "PreviewInSolutionExplorer": false

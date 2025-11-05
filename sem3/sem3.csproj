@@ -125,8 +125,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Controllers\AboutUsController.cs" />
+    <Compile Include="Controllers\BillPaymentController.cs" />
+    <Compile Include="Controllers\ContactUsController.cs" />
+    <Compile Include="Controllers\FeedbackController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\RechargeController.cs" />
+    <Compile Include="Controllers\SiteMapController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -149,6 +155,7 @@
       <DependentUpon>Recharge_System.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ModelViews\AdminAuthorizeAttribute .cs" />
+    <Compile Include="Models\ModelViews\CustomerCareController.cs" />
     <Compile Include="Models\ModelViews\Login.cs" />
     <Compile Include="Models\ModelViews\Register.cs" />
     <Compile Include="Models\ModelViews\UserM.cs" />
@@ -1841,6 +1848,8 @@
     <Content Include="Content\Admin\vendor\jquery\jquery.min.js" />
     <Content Include="Content\Admin\vendor\jquery\jquery.slim.js" />
     <Content Include="Content\Admin\vendor\jquery\jquery.slim.min.js" />
+    <Content Include="Content\Client\layout-custom.css" />
+    <Content Include="Content\Images\Logo3.png" />
     <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -2067,11 +2076,17 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Login\Register.cshtml" />
+    <Content Include="Views\AboutUs\Index.cshtml" />
+    <Content Include="Views\ContactUs\Index.cshtml" />
+    <Content Include="Views\Feedback\Index.cshtml" />
+    <Content Include="Views\SiteMap\Index.cshtml" />
+    <Content Include="Views\CustomerCare\Index.cshtml" />
+    <Content Include="Views\BillPayment\Index.cshtml" />
+    <Content Include="Views\Recharge\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Content\Images\" />
     <Folder Include="Models\Helpers\" />
   </ItemGroup>
   <ItemGroup>

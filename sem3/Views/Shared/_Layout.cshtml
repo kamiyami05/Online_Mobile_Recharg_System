@@ -4,8 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/Client/layout-custom")
     @Scripts.Render("~/bundles/modernizr")
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
 </head>
 <body>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
@@ -18,8 +19,13 @@
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Online Recharge", "Index", "Recharge", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("About Us", "Index", "AboutUs", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Contact Us", "Index", "ContactUs", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Post Bill Payment", "Index", "BillPayment", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Feedback", "Index", "Feedback", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Site Map", "Index", "SiteMap", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Customer Care", "Index", "CustomerCare", new { area = "" }, new { @class = "nav-link" })</li>
                 </ul>
             </div>
         </div>
@@ -27,8 +33,65 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        <footer class="bg-dark text-white mt-5">
+            <div class="container pt-5 pb-3">
+                <div class="row">
+
+                    <div class="col-md-3 mb-4">
+                        <img src="/images/Logo_FurEverCare.png" alt="FurEver Care Logo" class="img-fluid mb-3" style="max-height: 50px;" />
+                        <p class="text-muted small">
+                            Your pet's happiness is our priority. Connect, care, and create lasting memories with your furry friends.
+                        </p>
+                    </div>
+
+                    <div class="col-md-3 mb-4">
+                        <h4 class="h6 text-uppercase mb-3">Quick Links</h4>
+                        <ul class="list-unstyled">
+                            <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "text-white text-decoration-none d-block py-1" })</li>
+                            <li>@Html.ActionLink("About Us", "Index", "AboutUs", new { area = "" }, new { @class = "text-white text-decoration-none d-block py-1" })</li>
+                            <li>@Html.ActionLink("Post Bill Payment", "Index", "Home", new { area = "" }, new { @class = "text-white text-decoration-none d-block py-1" })</li>
+                            <li>@Html.ActionLink("Online Recharge", "Index", "Recharge", new { area = "" }, new { @class = "text-white text-decoration-none d-block py-1" })</li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-3 mb-4">
+                        <h4 class="h6 text-uppercase mb-3">Support</h4>
+                        <ul class="list-unstyled">
+                            <li>@Html.ActionLink("Contact Us", "Index", "ContactUs", new { area = "" }, new { @class = "text-white text-decoration-none d-block py-1" })</li>
+                            <li>@Html.ActionLink("Feedback", "Index", "Feedback", new { area = "" }, new { @class = "text-white text-decoration-none d-block py-1" })</li>
+                            <li>@Html.ActionLink("Customer Care", "Index", "CustomerCare", new { area = "" }, new { @class = "text-white text-decoration-none d-block py-1" })</li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-3 mb-4">
+                        <h4 class="h6 text-uppercase mb-3">Connect</h4>
+                        <div class="d-flex">
+                            <a href="https://www.facebook.com/dxuan1912" target="_blank" rel="noopener noreferrer" class="btn btn-secondary me-2 p-2 rounded-circle">
+                                <i class="ri-facebook-fill"></i>
+                            </a>
+                            <a href="https://x.com/cXun85826566" target="_blank" rel="noopener noreferrer" class="btn btn-secondary me-2 p-2 rounded-circle">
+                                <i class="ri-twitter-fill"></i>
+                            </a>
+                            <a href="https://www.instagram.com/dxuan1912/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary p-2 rounded-circle">
+                                <i class="ri-instagram-line"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="text-white-50" />
+                <div class="text-center py-4">
+                    <h4 class="h6 text-uppercase mb-4">Our Partners</h4>
+                    <div class="d-flex justify-content-center align-items-center gap-4">
+                        <img src="~/Content/Images/Logo3.png" alt="Aptech Logo 2" style="max-height: 50px;" />
+                    </div>
+                </div>
+
+                <hr class="text-white-50" />
+                <div class="text-center py-3">
+                    <p class="text-muted small">&copy; @DateTime.Now.Year - Online mobile recharge system. All rights reserved.</p>
+                </div>
+            </div>
         </footer>
     </div>
 
