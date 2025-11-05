@@ -3,22 +3,62 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="home-container" style="text-align:center; margin-top:50px;">
-    <h1>Welcome to Online Mobile Recharge System</h1>
+<link href="~/Content/home.css" rel="stylesheet" />
 
-    @if (ViewBag.CurrentUser == null)
+<div class="hero-section">
+    <h1>Fast & Secure Mobile Recharge</h1>
+    <p>Instant mobile top-ups, bill payments, and data packages at your fingertips. Recharge anytime, anywhere!</p>
+
+    @if (Session["CurrentUser"] == null)
     {
-        <p>You are browsing as a guest.</p>
-        <p>
-            <a href="@Url.Action("Login", "Login")" class="btn btn-primary">Login</a> or
-            <a href="@Url.Action("Register", "Login")" class="btn btn-success">Register</a>
-        </p>
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>Instant Recharge</h3>
+                <p>Get your mobile recharged instantly with our lightning-fast processing system</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Secure Payments</h3>
+                <p>Your transactions are protected with bank-level security encryption</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>All Networks</h3>
+                <p>Support for all major mobile networks and service providers</p>
+            </div>
+        </div>
+
+        <div class="auth-buttons">
+            <a href="@Url.Action("Login", "Login")" class="btn btn-primary">
+                <i class="fas fa-sign-in-alt"></i> Login
+            </a>
+            <a href="@Url.Action("Register", "Login")" class="btn btn-success">
+                <i class="fas fa-user-plus"></i> Register Now
+            </a>
+        </div>
     }
     else
     {
-        var user = ViewBag.CurrentUser as sem3.Models.ModelViews.UserM;
-        <p>Hello, <strong>@user.FullName</strong>!</p>
-        <p>Your role: @user.Role</p>
-        <a href="@Url.Action("Logout", "Login")" class="btn btn-danger">Logout</a>
+        var user = Session["CurrentUser"] as sem3.Models.ModelViews.UserM;
+        <div class="user-welcome">
+            <h2>Welcome Back! <i class="fas fa-hand-wave"></i></h2>
+            <div class="user-info">
+                <p>Hello, <strong>@user.FullName</strong></p>
+                <p>Your role: <span class="role-badge">@user.Role</span></p>
+                <p>Ready to recharge your mobile?</p>
+            </div>
+            <a href="@Url.Action("Logout", "Login")" class="btn btn-danger">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+        </div>
     }
 </div>
