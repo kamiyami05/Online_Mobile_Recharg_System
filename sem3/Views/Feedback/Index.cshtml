@@ -1,6 +1,63 @@
-﻿@{
+﻿﻿@{
     ViewBag.Title = "Feedback";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h1>Feedback</h1>
 
+<link href="~/Content/feedback.css" rel="stylesheet" />
+
+<div class="feedback-container">
+    <div class="feedback-header">
+        <h1>Feedback</h1>
+        <p class="subtitle">We value your opinion. Let us know how we are doing.</p>
+    </div>
+
+    <form class="feedback-form">
+        <div class="form-group">
+            <input type="text" placeholder="Your Name" required>
+        </div>
+        <div class="form-group">
+            <input type="email" placeholder="Your Email" required>
+        </div>
+
+        <div class="form-group">
+            <label class="rating-label">How satisfied are you with our service?</label>
+            <div class="emoji-rating">
+                <input type="radio" id="rating-1" name="rating" value="1">
+                <label for="rating-1" class="emoji-option">
+                    <span class="emoji">😠</span>
+                    <span class="rating-text">Very Unsatisfied</span>
+                </label>
+
+                <input type="radio" id="rating-2" name="rating" value="2">
+                <label for="rating-2" class="emoji-option">
+                    <span class="emoji">😕</span>
+                    <span class="rating-text">Unsatisfied</span>
+                </label>
+
+                <input type="radio" id="rating-3" name="rating" value="3">
+                <label for="rating-3" class="emoji-option">
+                    <span class="emoji">😐</span>
+                    <span class="rating-text">Neutral</span>
+                </label>
+
+                <input type="radio" id="rating-4" name="rating" value="4">
+                <label for="rating-4" class="emoji-option">
+                    <span class="emoji">😊</span>
+                    <span class="rating-text">Satisfied</span>
+                </label>
+
+                <input type="radio" id="rating-5" name="rating" value="5">
+                <label for="rating-5" class="emoji-option">
+                    <span class="emoji">😍</span>
+                    <span class="rating-text">Very Satisfied</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <textarea rows="6" placeholder="Write your feedback here..." required></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Submit Feedback</button>
+    </form>
+</div>

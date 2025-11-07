@@ -1,0 +1,188 @@
+﻿﻿.customer-care-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.care-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+    .care-header h1 {
+        font-size: 3rem;
+        background: whitesmoke;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 1rem;
+    }
+
+.subtitle {
+    color: black;
+    font-size: 1.2rem;
+}
+
+.emergency-contact {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 4rem;
+}
+
+.phone-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 3rem 2rem;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+    max-width: 400px;
+    width: 100%;
+}
+
+.phone-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.phone-card h2 {
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+}
+
+.phone-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+    .phone-number i {
+        font-size: 2rem;
+    }
+
+.phone-description {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.support-options {
+    margin-bottom: 4rem;
+}
+
+    .support-options h3 {
+        text-align: center;
+        margin-bottom: 2rem;
+        color: #333;
+        font-size: 2rem;
+    }
+
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.option-card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+    .option-card:hover {
+        transform: translateY(-10px);
+    }
+
+    .option-card i {
+        font-size: 3rem;
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 1rem;
+    }
+
+    .option-card h4 {
+        color: #333;
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+    }
+
+    .option-card p {
+        color: #666;
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+    }
+
+.option-btn {
+    padding: 10px 25px;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+    .option-btn:hover {
+        transform: translateY(-3px);
+    }
+
+.common-issues {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+    .common-issues h3 {
+        text-align: center;
+        margin-bottom: 2rem;
+        color: #333;
+        font-size: 2rem;
+    }
+
+.issues-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.issue-item {
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border-left: 4px solid #667eea;
+}
+
+    .issue-item h4 {
+        color: #333;
+        margin-bottom: 0.5rem;
+        font-size: 1.2rem;
+    }
+
+    .issue-item p {
+        color: #666;
+        line-height: 1.6;
+    }
+
+@media (max-width: 768px) {
+    .care-header h1 {
+        font-size: 2rem;
+    }
+
+    .phone-number {
+        font-size: 2rem;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .options-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,5 +1,78 @@
-﻿@{
+﻿﻿@{
     ViewBag.Title = "Customer Care";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h1>Customer Care</h1>
+
+<link href="~/Content/customer-care.css" rel="stylesheet" />
+
+<div class="customer-care-container">
+    <div class="care-header">
+        <h1>Customer Care</h1>
+        <p class="subtitle">We're Here to Help You 24/7</p>
+    </div>
+
+    <div class="emergency-contact">
+        <div class="phone-card">
+            <div class="phone-icon">
+                <i class="fas fa-headset"></i>
+            </div>
+            <h2>24/7 Customer Support</h2>
+            <div class="phone-number">
+                <i class="fas fa-phone"></i>
+                <span>1900 1000</span>
+            </div>
+            <p class="phone-description">Toll-free number available 24 hours a day, 7 days a week</p>
+        </div>
+    </div>
+
+    <div class="support-options">
+        <h3>Other Support Channels</h3>
+        <div class="options-grid">
+            <div class="option-card">
+                <i class="fas fa-comments"></i>
+                <h4>Live Chat</h4>
+                <p>Instant messaging support with our agents</p>
+                <button class="option-btn">Start Chat</button>
+            </div>
+
+            <div class="option-card">
+                <i class="fas fa-envelope"></i>
+                <h4>Email Support</h4>
+                <p>Send us your queries via email</p>
+                <button class="option-btn">Send Email</button>
+            </div>
+
+            <div class="option-card">
+                <i class="fas fa-question-circle"></i>
+                <h4>FAQ</h4>
+                <p>Find answers to common questions</p>
+                <button class="option-btn">View FAQ</button>
+            </div>
+
+            <div class="option-card">
+                <i class="fas fa-mobile-alt"></i>
+                <h4>SMS Support</h4>
+                <p>Text HELP to 8080 for assistance</p>
+                <button class="option-btn">Send SMS</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="common-issues">
+        <h3>Common Issues & Solutions</h3>
+        <div class="issues-list">
+            <div class="issue-item">
+                <h4>Recharge Not Processed?</h4>
+                <p>Check your transaction status in History section. If pending, wait 5-10 minutes.</p>
+            </div>
+            <div class="issue-item">
+                <h4>Wrong Number Entered?</h4>
+                <p>Contact us immediately with your transaction ID for refund process.</p>
+            </div>
+            <div class="issue-item">
+                <h4>Payment Failed?</h4>
+                <p>Ensure sufficient balance and correct card details. Try again after 10 minutes.</p>
+            </div>
+        </div>
+    </div>
+</div>
