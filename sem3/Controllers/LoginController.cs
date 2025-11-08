@@ -10,7 +10,7 @@ namespace sem3.Controllers
 {
     public class LoginController : Controller
     {
-        private readonly Recharge_SystemEntities _db = new Recharge_SystemEntities();
+        private readonly OnlineRechargeDBEntities _db = new OnlineRechargeDBEntities();
 
         public ActionResult Login()
         {
@@ -23,30 +23,31 @@ namespace sem3.Controllers
             if (ModelState.IsValid)
             {
                 var user = _db.Users.FirstOrDefault(u => u.Email == model.Email);
-                if (user != null && VerifyPassword(model.Password, user.Password))
+                if (user != null && VerifyPassword(model.Password, user.PasswordHash))
                 {
                     Session["CurrentUser"] = new User
                     {
-                        Id = user.Id,
+                        UserID = user.UserID,
                         FullName = user.FullName,
-                        Phone = user.Phone,
+                        MobileNumber = user.MobileNumber,
                         Email = user.Email,
-                        Password = user.Password,
-                        Role = user.Role,
+                        PasswordHash = user.PasswordHash,
+                        RoleID = user.UserID,
                         Address = user.Address,
-                        CreatedAt = (DateTime)user.CreatedAt,
-                        IsActive = (bool)user.IsActive
+                        RegistrationDate = user.RegistrationDate
                     };
 
-                    Session["CurrentUserId"] = user.Id;
+                    Session["CurrentUserId"] = user.UserID;
 
-                    if (user.Role.ToLower() == "admin")
+                    // Lấy tên role từ bảng Roles
+                    var role = _db.Roles.FirstOrDefault(r => r.RoleID == user.RoleID);
+                    if (role != null && role.RoleName.ToLower() == "admin")
                         return RedirectToAction("Index", "User", new { area = "Admin" });
 
                     return RedirectToAction("Index", "Home");
                 }
 
-                ModelState.AddModelError("", "Incorrect email or password.");
+                ModelState.AddModelError("", "Incorrect mobile number or password.");
             }
             return View(model);
         }
@@ -79,13 +80,12 @@ namespace sem3.Controllers
                 var newUser = new sem3.Models.Entities.User
                 {
                     FullName = model.FullName,
-                    Phone = model.Phone,
+                    MobileNumber = model.Phone,
                     Email = model.Email,
-                    Password = HashPassword(model.Password),
-                    Role = "User",
+                    PasswordHash = HashPassword(model.Password),
+                    RoleID = 2, // Mặc định là User
                     Address = model.Address,
-                    CreatedAt = DateTime.Now,
-                    IsActive = true
+                    RegistrationDate = DateTime.Now
                 };
 
                 _db.Users.Add(newUser);

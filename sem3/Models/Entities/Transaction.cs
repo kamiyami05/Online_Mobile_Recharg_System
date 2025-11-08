@@ -12,31 +12,31 @@ namespace sem3.Models.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class Transaction
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public Transaction()
         {
-            this.Feedbacks = new HashSet<Feedback>();
-            this.Transactions = new HashSet<Transaction>();
-            this.UserServices = new HashSet<UserService>();
+            this.PaymentDetails = new HashSet<PaymentDetail>();
+            this.PostpaidBills = new HashSet<PostpaidBill>();
+            this.TransactionScripts = new HashSet<TransactionScript>();
         }
     
-        public int UserID { get; set; }
+        public int TransactionID { get; set; }
         public string MobileNumber { get; set; }
-        public string PasswordHash { get; set; }
-        public string FullName { get; set; }
-        public string Email { get; set; }
-        public string Address { get; set; }
-        public Nullable<System.DateTime> RegistrationDate { get; set; }
-        public Nullable<int> RoleID { get; set; }
+        public Nullable<int> UserID { get; set; }
+        public string TransactionType { get; set; }
+        public Nullable<int> PlanID { get; set; }
+        public decimal Amount { get; set; }
+        public Nullable<System.DateTime> TransactionDate { get; set; }
+        public string Status { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Feedback> Feedbacks { get; set; }
-        public virtual Role Role { get; set; }
+        public virtual ICollection<PaymentDetail> PaymentDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Transaction> Transactions { get; set; }
+        public virtual ICollection<PostpaidBill> PostpaidBills { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserService> UserServices { get; set; }
+        public virtual ICollection<TransactionScript> TransactionScripts { get; set; }
+        public virtual User User { get; set; }
     }
 }

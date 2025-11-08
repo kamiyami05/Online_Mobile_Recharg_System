@@ -1,0 +1,64 @@
+﻿.profile-wrapper {
+    width: 600px;
+    margin: 40px auto;
+    padding: 25px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+}
+
+.profile-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+    .profile-row label {
+        width: 150px;
+        font-weight: bold;
+    }
+
+    .profile-row input {
+        flex: 1;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+    }
+
+.readonly {
+    background: #f5f5f5;
+}
+
+.edit-btn {
+    margin-top: 10px;
+    width: 100%;
+    padding: 10px;
+    background: #1a73e8;
+    color: white;
+    border-radius: 6px;
+    border: none;
+}
+
+.icon-btn {
+    margin-left: 10px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+/* Modal */
+.modal-bg {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+}
+
+.modal-box {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    width: 350px;
+    margin: 12% auto;
+    text-align: center;
+}

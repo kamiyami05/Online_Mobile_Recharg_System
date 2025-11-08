@@ -4,14 +4,13 @@ namespace sem3.Models.ModelViews
 {
     public class UserM
     {
-        public int Id { get; set; }
+        public int UserID { get; set; }
         public string FullName { get; set; } = "";
-        public string Phone { get; set; } = "";
+        public string MobileNumber { get; set; } = "";
         public string Email { get; set; } = "";
-        public string Password { get; set; } = "";
-        public string Role { get; set; } = "User";
+        public string PasswordHash { get; set; } = "";
+        public int? RoleID { get; set; } = 2;
         public string Address { get; set; } = "";
-        public DateTime? CreatedAt { get; set; } = DateTime.Now;
-        public bool? IsActive { get; set; } = true;
+        public DateTime? RegistrationDate { get; set; } = DateTime.Now;
     }
 }

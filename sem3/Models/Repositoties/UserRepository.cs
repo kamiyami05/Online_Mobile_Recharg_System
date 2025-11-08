@@ -7,11 +7,11 @@ namespace sem3.Models.Repositories
 {
     public class UserRepository : IDisposable
     {
-        private readonly Recharge_SystemEntities _context;
+        private readonly OnlineRechargeDBEntities _context;
 
         public UserRepository()
         {
-            _context = new Recharge_SystemEntities();
+            _context = new OnlineRechargeDBEntities();
         }
 
         public List<User> GetAll()
@@ -32,15 +32,14 @@ namespace sem3.Models.Repositories
 
         public void Update(User user)
         {
-            var existing = _context.Users.Find(user.Id);
+            var existing = _context.Users.Find(user.UserID);
             if (existing == null) return;
 
             existing.FullName = user.FullName;
             existing.Email = user.Email;
-            existing.Phone = user.Phone;
+            existing.MobileNumber = user.MobileNumber;
             existing.Address = user.Address;
             existing.Role = user.Role;
-            existing.IsActive = user.IsActive;
 
             _context.SaveChanges();
         }

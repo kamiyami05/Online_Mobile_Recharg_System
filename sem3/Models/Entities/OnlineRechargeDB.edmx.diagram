@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f91f642bf09244c49a0a7e4635582706" Name="Diagram1">
+        <EntityTypeShape EntityType="OnlineRechargeDBModel.AdminUser" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineRechargeDBModel.ContactPoint" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineRechargeDBModel.Feedback" Width="1.5" PointX="5.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineRechargeDBModel.PaymentDetail" Width="1.5" PointX="7.5" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineRechargeDBModel.PostpaidBill" Width="1.5" PointX="7.5" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineRechargeDBModel.RechargePlan" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineRechargeDBModel.Role" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineRechargeDBModel.Service" Width="1.5" PointX="8" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineRechargeDBModel.SiteContent" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineRechargeDBModel.Transaction" Width="1.5" PointX="5.25" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineRechargeDBModel.TransactionScript" Width="1.5" PointX="7.5" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineRechargeDBModel.User" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineRechargeDBModel.UserService" Width="1.5" PointX="10.25" PointY="7.375" IsExpanded="true" />
+        <AssociationConnector Association="OnlineRechargeDBModel.FK__Feedback__UserID__6477ECF3" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineRechargeDBModel.FK__PaymentDe__Trans__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineRechargeDBModel.FK__PostpaidB__Payme__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineRechargeDBModel.FK__Users__RoleID__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineRechargeDBModel.FK__UserServi__Servi__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineRechargeDBModel.FK__Transacti__Trans__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineRechargeDBModel.FK__Transacti__UserI__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineRechargeDBModel.FK__UserServi__UserI__5FB337D6" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

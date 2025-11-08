@@ -1,163 +1,57 @@
 ﻿@model sem3.Models.ModelViews.UserM
 @{
-    ViewBag.Title = "My Profile";
+    ViewBag.Title = "My Account";
     Layout = "~/Views/Shared/_Layout.cshtml";
-
-    // Lấy các model rỗng từ ViewBag
-    var emailFormModel = ViewBag.EmailForm as sem3.Models.ModelViews.ChangeEmail;
-    var passwordFormModel = ViewBag.PasswordForm as sem3.Models.ModelViews.ChangePassword;
 }
 
-<div class="container mt-5 mb-5">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card shadow-sm">
-                <div class="card-header bg-dark text-white">
-                    <h4 class="mb-0">My Profile</h4>
-                </div>
-                <div class="card-body">
+<link href="~/Content/profile.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-                    @if (TempData["SuccessMessage"] != null)
-                    {
-                        <div class="alert alert-success">@TempData["SuccessMessage"]</div>
-                    }
-                    @if (TempData["ErrorMessage"] != null)
-                    {
-                        <div class="alert alert-danger">@Html.Raw(TempData["ErrorMessage"].ToString().Replace("; ", "<br/>"))</div>
-                    }
+<div class="profile-wrapper" data-user-id="@Model.UserID">
 
-                    @using (Html.BeginForm("UpdateInfo", "Profile", FormMethod.Post))
-                    {
-                        @Html.AntiForgeryToken()
-                        @Html.HiddenFor(m => m.Id)
+    <h2>My Account</h2>
 
-                        <h5 class="text-primary">Personal Information</h5>
-                        <hr />
+    <div class="profile-info">
 
-                        <div class="mb-3">
-                            @Html.LabelFor(m => m.FullName, new { @class = "form-label" })
-                            @Html.TextBoxFor(m => m.FullName, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.FullName, "", new { @class = "text-danger" })
-                        </div>
-
-                        <div class="mb-3">
-                            @Html.LabelFor(m => m.Phone, new { @class = "form-label" })
-                            @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
-                        </div>
-
-                        <div class="mb-3">
-                            @Html.LabelFor(m => m.Address, new { @class = "form-label" })
-                            @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
-                        </div>
-
-                        <div class="mt-4 text-end">
-                            <button type="submit" class="btn btn-primary">
-                                <i class="fas fa-save"></i> Save Personal Info
-                            </button>
-                        </div>
-                    }
-
-                    <h5 class="text-secondary mt-5">Account Details</h5>
-                    <hr />
-
-                    <div class="mb-3 border-bottom pb-3">
-                        <div id="emailDisplay">
-                            <label class="form-label">Email:</label>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="h5">@Model.Email</span>
-                                <button type="button" class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#emailEditForm" aria-expanded="false" aria-controls="emailEditForm">
-                                    Edit
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="collapse" id="emailEditForm">
-                            @using (Html.BeginForm("ChangeEmail", "Profile", FormMethod.Post))
-                            {
-                                @Html.AntiForgeryToken()
-                                <label class="form-label">Current Email: @Model.Email</label>
-
-                                <div class="mb-3">
-                                    @Html.LabelFor(m => emailFormModel.NewEmail, new { @class = "form-label" })
-                                    @Html.TextBoxFor(m => emailFormModel.NewEmail, new { @class = "form-control", placeholder = "Enter new email" })
-                                    @Html.ValidationMessageFor(m => emailFormModel.NewEmail, "", new { @class = "text-danger" })
-                                </div>
-                                <div class="mb-3">
-                                    @Html.LabelFor(m => emailFormModel.ConfirmEmail, new { @class = "form-label" })
-                                    @Html.TextBoxFor(m => emailFormModel.ConfirmEmail, new { @class = "form-control", placeholder = "Confirm new email" })
-                                    @Html.ValidationMessageFor(m => emailFormModel.ConfirmEmail, "", new { @class = "text-danger" })
-                                </div>
-
-                                <button type="submit" class="btn btn-danger">Save New Email</button>
-                                <button type="button" class="btn btn-secondary" data-bs-toggle="collapse" data-bs-target="#emailEditForm">
-                                    Cancel
-                                </button>
-                            }
-                        </div>
-                    </div>
-
-                    <div class="mb-3">
-                        <div id="passwordDisplay">
-                            <label class="form-label">Password:</label>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="h5">••••••••</span>
-                                <button type="button" class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#passwordEditForm" aria-expanded="false" aria-controls="passwordEditForm">
-                                    Set
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="collapse" id="passwordEditForm">
-                            @using (Html.BeginForm("ChangePassword", "Profile", FormMethod.Post))
-                            {
-                                @Html.AntiForgeryToken()
-
-                                <div class="mb-3">
-                                    @Html.LabelFor(m => passwordFormModel.OldPassword, new { @class = "form-label" })
-                                    @Html.PasswordFor(m => passwordFormModel.OldPassword, new { @class = "form-control", placeholder = "Enter your current password" })
-                                    @Html.ValidationMessageFor(m => passwordFormModel.OldPassword, "", new { @class = "text-danger" })
-                                </div>
-                                <div class="mb-3">
-                                    @Html.LabelFor(m => passwordFormModel.NewPassword, new { @class = "form-label" })
-                                    @Html.PasswordFor(m => passwordFormModel.NewPassword, new { @class = "form-control", placeholder = "Enter new password" })
-                                    @Html.ValidationMessageFor(m => passwordFormModel.NewPassword, "", new { @class = "text-danger" })
-                                </div>
-                                <div class="mb-3">
-                                    @Html.LabelFor(m => passwordFormModel.ConfirmPassword, new { @class = "form-label" })
-                                    @Html.PasswordFor(m => passwordFormModel.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm new password" })
-                                    @Html.ValidationMessageFor(m => passwordFormModel.ConfirmPassword, "", new { @class = "text-danger" })
-                                </div>
-
-                                <button type="submit" class="btn btn-danger">Save New Password</button>
-                                <button type="button" class="btn btn-secondary" data-bs-toggle="collapse" data-bs-target="#passwordEditForm">
-                                    Cancel
-                                </button>
-                            }
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+        <div class="profile-row">
+            <label>Full Name:</label>
+            <input id="FullName" class="readonly" value="@Model.FullName" disabled />
         </div>
+
+        <div class="profile-row">
+            <label>Mobile Number:</label>
+            <input id="MobileNumber" class="readonly" value="@Model.MobileNumber" disabled />
+        </div>
+
+        <div class="profile-row">
+            <label>Email:</label>
+            <input id="Email" class="readonly" value="@Model.Email" disabled />
+        </div>
+
+        <div class="profile-row">
+            <label>Password:</label>
+            <input id="PasswordMask" type="password" value="********" class="readonly" disabled />
+            <button class="icon-btn" id="showPasswordBtn"><i class="fas fa-eye"></i></button>
+        </div>
+
+        <div class="profile-row">
+            <label>Address:</label>
+            <input id="Address" class="readonly" value="@Model.Address" disabled />
+        </div>
+
+        <button class="edit-btn" id="editBtn">Edit Info</button>
+
     </div>
 </div>
 
-@section scripts {
-    <script>
-        (function () {
-            var emailCollapse = document.getElementById('emailEditForm');
-            var passwordCollapse = document.getElementById('passwordEditForm');
+<!-- Modal yêu cầu nhập mật khẩu -->
+<div id="passwordModal" class="modal-bg">
+    <div class="modal-box">
+        <h3>Enter Password</h3>
+        <input type="password" id="PasswordCheck" placeholder="Enter your current password" />
+        <button id="ConfirmPasswordBtn">Confirm</button>
+        <button id="CancelPasswordModal">Cancel</button>
+    </div>
+</div>
 
-            var bsEmailCollapse = new bootstrap.Collapse(emailCollapse, { toggle: false });
-            var bsPasswordCollapse = new bootstrap.Collapse(passwordCollapse, { toggle: false });
-
-            emailCollapse.addEventListener('show.bs.collapse', function () {
-                bsPasswordCollapse.hide();
-            });
-
-            passwordCollapse.addEventListener('show.bs.collapse', function () {
-                bsEmailCollapse.hide();
-            });
-        })();
-    </script>
-}
+<script src="~/Scripts/profile.js"></script>

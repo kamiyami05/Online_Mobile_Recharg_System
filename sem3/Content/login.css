@@ -92,7 +92,7 @@ input[type="text"] {
     }
 
 /* Button Styles */
-.btn, .btn-primary {
+.btn1, .btn-primary {
     width: 100%;
     padding: 16px;
     background: linear-gradient(45deg, #667eea, #764ba2);
@@ -110,7 +110,7 @@ input[type="text"] {
     font-family: inherit;
 }
 
-    .btn:hover, .btn-primary:hover {
+    .btn1:hover, .btn-primary:hover {
         transform: translateY(-3px);
         box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
     }
