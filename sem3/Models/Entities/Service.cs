@@ -18,6 +18,7 @@ namespace sem3.Models.Entities
         public Service()
         {
             this.UserServices = new HashSet<UserService>();
+            this.UserServiceSettings = new HashSet<UserServiceSetting>();
         }
     
         public int ServiceID { get; set; }
@@ -26,5 +27,7 @@ namespace sem3.Models.Entities
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserService> UserServices { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserServiceSetting> UserServiceSettings { get; set; }
     }
 }

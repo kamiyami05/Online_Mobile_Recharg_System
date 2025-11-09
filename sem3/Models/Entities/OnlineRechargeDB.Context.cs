@@ -38,5 +38,6 @@ namespace sem3.Models.Entities
         public virtual DbSet<TransactionScript> TransactionScripts { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserService> UserServices { get; set; }
+        public virtual DbSet<UserServiceSetting> UserServiceSettings { get; set; }
     }
 }

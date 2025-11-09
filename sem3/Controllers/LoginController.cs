@@ -25,6 +25,8 @@ namespace sem3.Controllers
                 var user = _db.Users.FirstOrDefault(u => u.Email == model.Email);
                 if (user != null && VerifyPassword(model.Password, user.PasswordHash))
                 {
+                    var role = _db.Roles.FirstOrDefault(r => r.RoleID == user.RoleID);
+
                     Session["CurrentUser"] = new User
                     {
                         UserID = user.UserID,
@@ -33,16 +35,12 @@ namespace sem3.Controllers
                         Email = user.Email,
                         PasswordHash = user.PasswordHash,
                         RoleID = user.UserID,
+                        RoleName = role?.RoleName ?? "User",
                         Address = user.Address,
                         RegistrationDate = user.RegistrationDate
                     };
 
                     Session["CurrentUserId"] = user.UserID;
-
-                    // Lấy tên role từ bảng Roles
-                    var role = _db.Roles.FirstOrDefault(r => r.RoleID == user.RoleID);
-                    if (role != null && role.RoleName.ToLower() == "admin")
-                        return RedirectToAction("Index", "User", new { area = "Admin" });
 
                     return RedirectToAction("Index", "Home");
                 }

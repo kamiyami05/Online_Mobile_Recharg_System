@@ -135,6 +135,17 @@
           <Property Name="ActivationDate" Type="datetime" />
           <Property Name="IsActive" Type="bit" />
         </EntityType>
+        <EntityType Name="UserServiceSettings">
+          <Key>
+            <PropertyRef Name="SettingID" />
+          </Key>
+          <Property Name="SettingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="ServiceID" Type="int" Nullable="false" />
+          <Property Name="IsEnabled" Type="bit" />
+          <Property Name="SelectedTune" Type="varchar" MaxLength="100" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
         <Association Name="FK__Feedback__UserID__6477ECF3">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
@@ -219,6 +230,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__UserServi__Servi__70DDC3D8">
+          <End Role="Services" Type="Self.Services" Multiplicity="1" />
+          <End Role="UserServiceSettings" Type="Self.UserServiceSettings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="ServiceID" />
+            </Principal>
+            <Dependent Role="UserServiceSettings">
+              <PropertyRef Name="ServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__UserServi__UserI__5FB337D6">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="UserServices" Type="Self.UserServices" Multiplicity="*" />
@@ -227,6 +250,18 @@
               <PropertyRef Name="UserID" />
             </Principal>
             <Dependent Role="UserServices">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserServi__UserI__6FE99F9F">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserServiceSettings" Type="Self.UserServiceSettings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserServiceSettings">
               <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
@@ -245,6 +280,7 @@
           <EntitySet Name="TransactionScripts" EntityType="Self.TransactionScripts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserServices" EntityType="Self.UserServices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserServiceSettings" EntityType="Self.UserServiceSettings" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Feedback__UserID__6477ECF3" Association="Self.FK__Feedback__UserID__6477ECF3">
             <End Role="Users" EntitySet="Users" />
             <End Role="Feedback" EntitySet="Feedback" />
@@ -273,9 +309,17 @@
             <End Role="Services" EntitySet="Services" />
             <End Role="UserServices" EntitySet="UserServices" />
           </AssociationSet>
+          <AssociationSet Name="FK__UserServi__Servi__70DDC3D8" Association="Self.FK__UserServi__Servi__70DDC3D8">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="UserServiceSettings" EntitySet="UserServiceSettings" />
+          </AssociationSet>
           <AssociationSet Name="FK__UserServi__UserI__5FB337D6" Association="Self.FK__UserServi__UserI__5FB337D6">
             <End Role="Users" EntitySet="Users" />
             <End Role="UserServices" EntitySet="UserServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserServi__UserI__6FE99F9F" Association="Self.FK__UserServi__UserI__6FE99F9F">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserServiceSettings" EntitySet="UserServiceSettings" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -364,6 +408,7 @@
           <Property Name="ServiceName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ServiceDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="UserServices" Relationship="Self.FK__UserServi__Servi__60A75C0F" FromRole="Services" ToRole="UserServices" />
+          <NavigationProperty Name="UserServiceSettings" Relationship="Self.FK__UserServi__Servi__70DDC3D8" FromRole="Services" ToRole="UserServiceSettings" />
         </EntityType>
         <EntityType Name="SiteContent">
           <Key>
@@ -416,6 +461,7 @@
           <NavigationProperty Name="Role" Relationship="Self.FK__Users__RoleID__3D5E1FD2" FromRole="Users" ToRole="Roles" />
           <NavigationProperty Name="Transactions" Relationship="Self.FK__Transacti__UserI__48CFD27E" FromRole="Users" ToRole="Transactions" />
           <NavigationProperty Name="UserServices" Relationship="Self.FK__UserServi__UserI__5FB337D6" FromRole="Users" ToRole="UserServices" />
+          <NavigationProperty Name="UserServiceSettings" Relationship="Self.FK__UserServi__UserI__6FE99F9F" FromRole="Users" ToRole="UserServiceSettings" />
         </EntityType>
         <EntityType Name="UserService">
           <Key>
@@ -428,6 +474,19 @@
           <Property Name="IsActive" Type="Boolean" />
           <NavigationProperty Name="Service" Relationship="Self.FK__UserServi__Servi__60A75C0F" FromRole="UserServices" ToRole="Services" />
           <NavigationProperty Name="User" Relationship="Self.FK__UserServi__UserI__5FB337D6" FromRole="UserServices" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="UserServiceSetting">
+          <Key>
+            <PropertyRef Name="SettingID" />
+          </Key>
+          <Property Name="SettingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="ServiceID" Type="Int32" Nullable="false" />
+          <Property Name="IsEnabled" Type="Boolean" />
+          <Property Name="SelectedTune" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Service" Relationship="Self.FK__UserServi__Servi__70DDC3D8" FromRole="UserServiceSettings" ToRole="Services" />
+          <NavigationProperty Name="User" Relationship="Self.FK__UserServi__UserI__6FE99F9F" FromRole="UserServiceSettings" ToRole="Users" />
         </EntityType>
         <Association Name="FK__Feedback__UserID__6477ECF3">
           <End Role="Users" Type="Self.User" Multiplicity="0..1" />
@@ -489,6 +548,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__UserServi__Servi__70DDC3D8">
+          <End Role="Services" Type="Self.Service" Multiplicity="1" />
+          <End Role="UserServiceSettings" Type="Self.UserServiceSetting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="ServiceID" />
+            </Principal>
+            <Dependent Role="UserServiceSettings">
+              <PropertyRef Name="ServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Transacti__Trans__4CA06362">
           <End Role="Transactions" Type="Self.Transaction" Multiplicity="1" />
           <End Role="TransactionScripts" Type="Self.TransactionScript" Multiplicity="*" />
@@ -525,6 +596,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__UserServi__UserI__6FE99F9F">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="UserServiceSettings" Type="Self.UserServiceSetting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserServiceSettings">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="OnlineRechargeDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AdminUsers" EntityType="Self.AdminUser" />
           <EntitySet Name="ContactPoints" EntityType="Self.ContactPoint" />
@@ -539,6 +622,7 @@
           <EntitySet Name="TransactionScripts" EntityType="Self.TransactionScript" />
           <EntitySet Name="Users" EntityType="Self.User" />
           <EntitySet Name="UserServices" EntityType="Self.UserService" />
+          <EntitySet Name="UserServiceSettings" EntityType="Self.UserServiceSetting" />
           <AssociationSet Name="FK__Feedback__UserID__6477ECF3" Association="Self.FK__Feedback__UserID__6477ECF3">
             <End Role="Users" EntitySet="Users" />
             <End Role="Feedback" EntitySet="Feedbacks" />
@@ -559,6 +643,10 @@
             <End Role="Services" EntitySet="Services" />
             <End Role="UserServices" EntitySet="UserServices" />
           </AssociationSet>
+          <AssociationSet Name="FK__UserServi__Servi__70DDC3D8" Association="Self.FK__UserServi__Servi__70DDC3D8">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="UserServiceSettings" EntitySet="UserServiceSettings" />
+          </AssociationSet>
           <AssociationSet Name="FK__Transacti__Trans__4CA06362" Association="Self.FK__Transacti__Trans__4CA06362">
             <End Role="Transactions" EntitySet="Transactions" />
             <End Role="TransactionScripts" EntitySet="TransactionScripts" />
@@ -570,6 +658,10 @@
           <AssociationSet Name="FK__UserServi__UserI__5FB337D6" Association="Self.FK__UserServi__UserI__5FB337D6">
             <End Role="Users" EntitySet="Users" />
             <End Role="UserServices" EntitySet="UserServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserServi__UserI__6FE99F9F" Association="Self.FK__UserServi__UserI__6FE99F9F">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserServiceSettings" EntitySet="UserServiceSettings" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -718,6 +810,18 @@
                 <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
                 <ScalarProperty Name="ActivationDate" ColumnName="ActivationDate" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserServiceSettings">
+            <EntityTypeMapping TypeName="OnlineRechargeDBModel.UserServiceSetting">
+              <MappingFragment StoreEntitySet="UserServiceSettings">
+                <ScalarProperty Name="SettingID" ColumnName="SettingID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+                <ScalarProperty Name="SelectedTune" ColumnName="SelectedTune" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

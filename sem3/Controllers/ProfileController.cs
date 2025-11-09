@@ -28,6 +28,7 @@ namespace sem3.Controllers
                 Session.Clear();
                 return RedirectToAction("Login", "Login");
             }
+            var role = _db.Roles.FirstOrDefault(r => r.RoleID == userFromDb.RoleID);
 
             var viewModel = new UserM
             {
@@ -39,66 +40,81 @@ namespace sem3.Controllers
                 RegistrationDate = userFromDb.RegistrationDate,
                 PasswordHash = "",
                 RoleID = userFromDb.RoleID,
+                RoleName = role?.RoleName ?? "User"
             };
 
-            // Truyền các model rỗng cho các form popup
-            ViewBag.EmailForm = new ChangeEmail();
-            ViewBag.PasswordForm = new ChangePassword();
+            ViewBag.DoNotDisturbStatus = GetServiceStatus(userFromDb.UserID, "Do Not Disturb");
+            ViewBag.CallerTunesStatus = GetServiceStatus(userFromDb.UserID, "Caller Tunes");
+            ViewBag.SelectedTune = GetSelectedTune(userFromDb.UserID);
 
             return View(viewModel);
         }
 
+        // POST: Profile/ChangePassword
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ChangePassword(ChangePassword model)
+        public JsonResult ChangePassword(ChangePassword model)
         {
             if (Session["CurrentUser"] == null)
             {
-                return RedirectToAction("Login", "Login");
+                return Json(new { success = false, message = "Session expired. Please login again." });
             }
+
             var sessionUser = Session["CurrentUser"] as UserM;
             var userInDb = _db.Users.Find(sessionUser.UserID);
-            if (userInDb == null) return HttpNotFound();
+            if (userInDb == null)
+                return Json(new { success = false, message = "User not found." });
 
+            // Verify current password
             if (!VerifyPassword(model.OldPassword, userInDb.PasswordHash))
             {
-                ModelState.AddModelError("OldPassword", "Incorrect current password.");
+                return Json(new { success = false, message = "Current password is incorrect." });
             }
 
-            if (ModelState.IsValid)
+            // Validate new password
+            if (string.IsNullOrEmpty(model.NewPassword) || model.NewPassword.Length < 6)
             {
-                try
-                {
-                    userInDb.PasswordHash = HashPassword(model.NewPassword);
-                    _db.SaveChanges();
-                    TempData["SuccessMessage"] = "Password updated successfully!";
-                }
-                catch (Exception ex)
-                {
-                    TempData["ErrorMessage"] = "An error occurred: " + ex.Message;
-                }
+                return Json(new { success = false, message = "New password must be at least 6 characters long." });
             }
-            else
+
+            if (model.NewPassword != model.ConfirmPassword)
             {
-                TempData["ErrorMessage"] = "Password update failed: " + string.Join("; ", ModelState.Values
-                    .SelectMany(v => v.Errors)
-                    .Select(e => e.ErrorMessage));
+                return Json(new { success = false, message = "New password and confirmation do not match." });
             }
-            return RedirectToAction("Index");
+
+            // Update password
+            try
+            {
+                userInDb.PasswordHash = HashPassword(model.NewPassword);
+                _db.SaveChanges();
+
+                // Update session if needed
+                sessionUser.PasswordHash = userInDb.PasswordHash;
+                Session["CurrentUser"] = sessionUser;
+
+                return Json(new { success = true, message = "Password changed successfully!" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = "An error occurred: " + ex.Message });
+            }
         }
 
+        // Helper methods for password hashing and verification
         private bool VerifyPassword(string providedPassword, string hashedPassword)
         {
             var passwordHasher = new PasswordHasher();
             return passwordHasher.VerifyHashedPassword(hashedPassword, providedPassword) == PasswordVerificationResult.Success;
         }
 
+        // Hash a password
         private string HashPassword(string password)
         {
             var passwordHasher = new PasswordHasher();
             return passwordHasher.HashPassword(password);
         }
 
+        // POST: Profile/UpdateInfo
         [HttpPost]
         public JsonResult UpdateInfo(int UserID, string FullName, string MobileNumber, string Email, string Address)
         {
@@ -108,23 +124,23 @@ namespace sem3.Controllers
                 if (user == null)
                     return Json(new { success = false, message = "User not found." });
 
-                // Validate định dạng email
+                // Validate email format
                 if (!new EmailAddressAttribute().IsValid(Email))
                     return Json(new { success = false, message = "Invalid email format." });
 
-                // Check trùng email
+                // Check duplicate email
                 if (_db.Users.Any(u => u.Email == Email && u.UserID != UserID))
                     return Json(new { success = false, message = "Email already exists." });
 
-                // Validate số điện thoại VN 10 số
+                // Validate Vietnamese phone number (10 digits)
                 if (!Regex.IsMatch(MobileNumber, @"^\d{10}$"))
                     return Json(new { success = false, message = "Phone number must be 10 digits." });
 
-                // Check trùng số điện thoại
+                // Check duplicate phone number
                 if (_db.Users.Any(u => u.MobileNumber == MobileNumber && u.UserID != UserID))
                     return Json(new { success = false, message = "Phone number already exists." });
 
-                // Lưu thay đổi
+                // Save changes
                 user.FullName = FullName;
                 user.MobileNumber = MobileNumber;
                 user.Email = Email;
@@ -132,7 +148,7 @@ namespace sem3.Controllers
 
                 _db.SaveChanges();
 
-                return Json(new { success = true });
+                return Json(new { success = true, message = "Profile updated successfully!" });
             }
             catch (Exception ex)
             {
@@ -140,20 +156,157 @@ namespace sem3.Controllers
             }
         }
 
-
+        // POST: Profile/VerifyPassword
         [HttpPost]
         public JsonResult VerifyPassword(string password)
         {
             if (Session["CurrentUser"] == null)
-                return Json(new { success = false });
+                return Json(new { success = false, message = "Session expired" });
 
             var sessionUser = Session["CurrentUser"] as UserM;
             var userInDb = _db.Users.Find(sessionUser.UserID);
             if (userInDb == null)
-                return Json(new { success = false });
+                return Json(new { success = false, message = "User not found" });
 
             bool valid = VerifyPassword(password, userInDb.PasswordHash);
-            return Json(new { success = valid });
+            return Json(new { success = valid, message = valid ? "Password verified" : "Incorrect password" });
+        }
+
+        // Helper methods to get service status and selected tune
+        private bool GetServiceStatus(int userId, string serviceName)
+        {
+            var service = _db.Services.FirstOrDefault(s => s.ServiceName == serviceName);
+            if (service == null) return false;
+
+            var setting = _db.UserServiceSettings
+                .FirstOrDefault(us => us.UserID == userId && us.ServiceID == service.ServiceID);
+
+            return setting?.IsEnabled ?? false;
+        }
+
+        // Get selected tune for Caller Tunes service
+        private string GetSelectedTune(int userId)
+        {
+            var service = _db.Services.FirstOrDefault(s => s.ServiceName == "Caller Tunes");
+            if (service == null) return "Default";
+
+            var setting = _db.UserServiceSettings
+                .FirstOrDefault(us => us.UserID == userId && us.ServiceID == service.ServiceID);
+
+            return setting?.SelectedTune ?? "Default";
+        }
+
+        // POST: Profile/ToggleDoNotDisturb
+        [HttpPost]
+        public JsonResult ToggleDoNotDisturb()
+        {
+            try
+            {
+                if (Session["CurrentUser"] == null)
+                    return Json(new { success = false, message = "Session expired" });
+
+                var sessionUser = Session["CurrentUser"] as UserM;
+                var doNotDisturbService = _db.Services.FirstOrDefault(s => s.ServiceName == "Do Not Disturb");
+
+                if (doNotDisturbService == null)
+                    return Json(new { success = false, message = "Service not found" });
+
+                var existingSetting = _db.UserServiceSettings
+                    .FirstOrDefault(us => us.UserID == sessionUser.UserID && us.ServiceID == doNotDisturbService.ServiceID);
+
+                if (existingSetting == null)
+                {
+                    // Tạo mới setting
+                    var newSetting = new Models.Entities.UserServiceSetting
+                    {
+                        UserID = sessionUser.UserID,
+                        ServiceID = doNotDisturbService.ServiceID,
+                        IsEnabled = true,
+                        UpdatedDate = DateTime.Now
+                    };
+                    _db.UserServiceSettings.Add(newSetting);
+                }
+                else
+                {
+                    // Toggle trạng thái
+                    existingSetting.IsEnabled = !existingSetting.IsEnabled;
+                    existingSetting.UpdatedDate = DateTime.Now;
+                }
+
+                _db.SaveChanges();
+
+                var newStatus = existingSetting?.IsEnabled ?? true;
+                return Json(new
+                {
+                    success = true,
+                    message = $"Do Not Disturb {(newStatus ? "enabled" : "disabled")}",
+                    isEnabled = newStatus
+                });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message });
+            }
+        }
+
+        // POST: Profile/UpdateCallerTune
+        [HttpPost]
+        public JsonResult UpdateCallerTune(string selectedTune)
+        {
+            try
+            {
+                if (Session["CurrentUser"] == null)
+                    return Json(new { success = false, message = "Session expired" });
+
+                var sessionUser = Session["CurrentUser"] as UserM;
+                var callerTunesService = _db.Services.FirstOrDefault(s => s.ServiceName == "Caller Tunes");
+
+                if (callerTunesService == null)
+                    return Json(new { success = false, message = "Service not found" });
+
+                // Validate selected tune
+                var allowedTunes = new[] { "Default", "Waiting.mp3" };
+                if (!allowedTunes.Contains(selectedTune))
+                    return Json(new { success = false, message = "Invalid tune selection" });
+
+                var existingSetting = _db.UserServiceSettings
+                    .FirstOrDefault(us => us.UserID == sessionUser.UserID && us.ServiceID == callerTunesService.ServiceID);
+
+                if (existingSetting == null)
+                {
+                    // Tạo mới setting
+                    var newSetting = new Models.Entities.UserServiceSetting
+                    {
+                        UserID = sessionUser.UserID,
+                        ServiceID = callerTunesService.ServiceID,
+                        IsEnabled = selectedTune != "Default", // Enable nếu không phải Default
+                        SelectedTune = selectedTune,
+                        UpdatedDate = DateTime.Now
+                    };
+                    _db.UserServiceSettings.Add(newSetting);
+                }
+                else
+                {
+                    // Cập nhật setting
+                    existingSetting.SelectedTune = selectedTune;
+                    existingSetting.IsEnabled = selectedTune != "Default";
+                    existingSetting.UpdatedDate = DateTime.Now;
+                }
+
+                _db.SaveChanges();
+
+                return Json(new
+                {
+                    success = true,
+                    message = $"Caller tune updated to {selectedTune}",
+                    selectedTune = selectedTune,
+                    isEnabled = selectedTune != "Default"
+                });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message });
+            }
         }
 
         protected override void Dispose(bool disposing)

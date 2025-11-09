@@ -5,14 +5,18 @@
 }
 
 <link href="~/Content/profile.css" rel="stylesheet" />
+
+<!-- Kiểm tra CDN bằng cách thêm trực tiếp -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+@Html.AntiForgeryToken()
 
 <div class="profile-wrapper" data-user-id="@Model.UserID">
-
     <h2>My Account</h2>
 
     <div class="profile-info">
-
         <div class="profile-row">
             <label>Full Name:</label>
             <input id="FullName" class="readonly" value="@Model.FullName" disabled />
@@ -28,10 +32,11 @@
             <input id="Email" class="readonly" value="@Model.Email" disabled />
         </div>
 
-        <div class="profile-row">
-            <label>Password:</label>
-            <input id="PasswordMask" type="password" value="********" class="readonly" disabled />
-            <button class="icon-btn" id="showPasswordBtn"><i class="fas fa-eye"></i></button>
+        <div class="password-row">
+            <div class="profile-row">
+                <label>Password:</label>
+                <input type="password" value="********" class="readonly" disabled />
+            </div>
         </div>
 
         <div class="profile-row">
@@ -39,19 +44,84 @@
             <input id="Address" class="readonly" value="@Model.Address" disabled />
         </div>
 
-        <button class="edit-btn" id="editBtn">Edit Info</button>
+        <button class="edit-btn" id="editBtn">
+            <i class="fas fa-edit"></i> Edit Profile Info
+        </button>
 
+        <button class="edit-btn change-password-btn" id="changePasswordBtn">
+            <i class="fas fa-key"></i> Change Password
+        </button>
     </div>
-</div>
 
-<!-- Modal yêu cầu nhập mật khẩu -->
-<div id="passwordModal" class="modal-bg">
-    <div class="modal-box">
-        <h3>Enter Password</h3>
-        <input type="password" id="PasswordCheck" placeholder="Enter your current password" />
-        <button id="ConfirmPasswordBtn">Confirm</button>
-        <button id="CancelPasswordModal">Cancel</button>
+    <!-- Services Section -->
+    <div class="services-section">
+        <h3>My Services</h3>
+
+        <!-- Do Not Disturb Service -->
+        <div class="service-item">
+            <div class="service-info">
+                <h4>Do Not Disturb</h4>
+                <p>Block promotional calls and messages</p>
+            </div>
+            <div class="service-actions">
+                <span id="doNotDisturbStatus" class="service-status @(ViewBag.DoNotDisturbStatus ? "status-enabled" : "status-disabled")">
+                    @(ViewBag.DoNotDisturbStatus ? "Enabled" : "Disabled")
+                </span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="doNotDisturbToggle" @(ViewBag.DoNotDisturbStatus ? "checked" : "")>
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Caller Tunes Service -->
+        <div class="service-item with-preview">
+            <div class="service-info">
+                <h4>Caller Tunes</h4>
+                <p>Customize your call waiting music</p>
+            </div>
+            <div class="service-actions with-preview">
+                <span id="callerTuneStatus" class="service-status @(ViewBag.CallerTunesStatus ? "status-enabled" : "status-disabled")">
+                    @(ViewBag.CallerTunesStatus ? "Enabled" : "Disabled")
+                </span>
+                <div class="tune-select-wrapper">
+                    <select id="callerTuneSelect" class="tune-select">
+                        <option value="Default" @(ViewBag.SelectedTune == "Default" ? "selected" : "")>Default (No music)</option>
+                        <option value="Waiting.mp3" @(ViewBag.SelectedTune == "Waiting.mp3" ? "selected" : "")>Waiting Music</option>
+                    </select>
+                    <button id="saveTuneBtn" class="service-btn btn-save" style="display: none;">Save</button>
+                    <button id="cancelTuneBtn" class="service-btn btn-cancel" style="display: none;">Cancel</button>
+                </div>
+
+                <!-- Audio Preview Panel -->
+                <div id="tunePreview" class="tune-preview">
+                    <h5><i class="fas fa-music"></i> Preview Caller Tune</h5>
+                    <div class="preview-controls">
+                        <button id="playPreviewBtn" class="preview-btn btn-play">
+                            <i class="fas fa-play"></i> Play Preview
+                        </button>
+                        <button id="stopPreviewBtn" class="preview-btn btn-stop">
+                            <i class="fas fa-stop"></i> Stop
+                        </button>
+                        <div class="volume-control">
+                            <label for="volumeSlider">Volume:</label>
+                            <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="0.7">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
 <script src="~/Scripts/profile.js"></script>
+<script>
+ // Initialize services when document is ready
+ $(document).ready(function() {
+     initializeServices(
+         @Json.Encode(ViewBag.DoNotDisturbStatus),
+         '@ViewBag.SelectedTune',
+         @Json.Encode(ViewBag.CallerTunesStatus)
+     );
+ });
+</script>

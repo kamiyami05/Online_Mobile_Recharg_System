@@ -20,6 +20,7 @@ namespace sem3.Models.Entities
             this.Feedbacks = new HashSet<Feedback>();
             this.Transactions = new HashSet<Transaction>();
             this.UserServices = new HashSet<UserService>();
+            this.UserServiceSettings = new HashSet<UserServiceSetting>();
         }
     
         public int UserID { get; set; }
@@ -38,5 +39,7 @@ namespace sem3.Models.Entities
         public virtual ICollection<Transaction> Transactions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserService> UserServices { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserServiceSetting> UserServiceSettings { get; set; }
     }
 }

@@ -16,49 +16,353 @@
     .profile-row label {
         width: 150px;
         font-weight: bold;
+        color: #333;
     }
 
     .profile-row input {
         flex: 1;
-        padding: 8px;
-        border: 1px solid #ccc;
+        padding: 10px 12px;
+        border: 1px solid #ddd;
         border-radius: 6px;
+        font-size: 14px;
     }
 
 .readonly {
-    background: #f5f5f5;
+    background: #f8f9fa;
+    color: #666;
 }
 
 .edit-btn {
     margin-top: 10px;
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     background: #1a73e8;
     color: white;
     border-radius: 6px;
     border: none;
-}
-
-.icon-btn {
-    margin-left: 10px;
-    border: none;
-    background: none;
+    font-size: 16px;
     cursor: pointer;
+    transition: all 0.3s;
 }
 
-/* Modal */
-.modal-bg {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.6);
+    .edit-btn:hover {
+        background: #0d62d9;
+        transform: translateY(-1px);
+    }
+
+.change-password-btn {
+    background: #ff9800 !important;
 }
 
-.modal-box {
-    background: white;
-    padding: 25px;
+    .change-password-btn:hover {
+        background: #f57c00 !important;
+    }
+
+.save-mode {
+    background: #4caf50 !important;
+}
+
+    .save-mode:hover {
+        background: #45a049 !important;
+    }
+
+.cancel-btn {
+    background: #f44336 !important;
+    margin-top: 8px !important;
+}
+
+    .cancel-btn:hover {
+        background: #d32f2f !important;
+    }
+
+/* SweetAlert Custom Styles */
+.btn-confirm {
+    background: #1a73e8 !important;
+    color: white !important;
+    border: none !important;
+    padding: 10px 24px !important;
+    border-radius: 6px !important;
+    font-size: 14px !important;
+    margin: 0 8px !important;
+    cursor: pointer !important;
+}
+
+.btn-cancel {
+    background: #6c757d !important;
+    color: white !important;
+    border: none !important;
+    padding: 10px 24px !important;
+    border-radius: 6px !important;
+    font-size: 14px !important;
+    margin: 0 8px !important;
+    cursor: pointer !important;
+}
+
+.swal2-popup {
+    border-radius: 12px !important;
+    padding: 24px !important;
+}
+
+.swal2-input {
+    border: 2px solid #e1e1e1 !important;
+    border-radius: 8px !important;
+    padding: 12px !important;
+    margin: 8px 0 !important;
+    font-size: 14px !important;
+}
+
+    .swal2-input:focus {
+        border-color: #1a73e8 !important;
+        box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2) !important;
+    }
+
+.swal2-title {
+    font-size: 1.5em !important;
+    color: #333 !important;
+}
+
+.swal2-html-container {
+    font-size: 14px !important;
+    color: #666 !important;
+}
+
+/* Password field row */
+.password-row {
+    background: #f8f9fa;
+    border-radius: 6px;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+    .password-row .profile-row {
+        margin-bottom: 0;
+    }
+
+    .password-row label {
+        color: #666;
+    }
+
+/* Services Section */
+.services-section {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid #e1e1e1;
+}
+
+    .services-section h3 {
+        color: #333;
+        margin-bottom: 20px;
+        font-size: 1.3em;
+    }
+
+.service-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 15px;
+    background: #f8f9fa;
     border-radius: 8px;
-    width: 350px;
-    margin: 12% auto;
-    text-align: center;
+    border: 1px solid #e1e1e1;
+}
+
+.service-info h4 {
+    margin: 0 0 5px 0;
+    color: #333;
+}
+
+.service-info p {
+    margin: 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.service-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* Toggle Switch */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+    .toggle-switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 24px;
+}
+
+    .toggle-slider:before {
+        position: absolute;
+        content: "";
+        height: 16px;
+        width: 16px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        transition: .4s;
+        border-radius: 50%;
+    }
+
+input:checked + .toggle-slider {
+    background-color: #4caf50;
+}
+
+    input:checked + .toggle-slider:before {
+        transform: translateX(26px);
+    }
+
+/* Select Dropdown */
+.tune-select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background: white;
+    font-size: 14px;
+    min-width: 150px;
+}
+
+.service-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.btn-save {
+    background: #1a73e8;
+    color: white;
+}
+
+    .btn-save:hover {
+        background: #0d62d9;
+    }
+
+.btn-cancel {
+    background: #6c757d;
+    color: white;
+}
+
+    .btn-cancel:hover {
+        background: #5a6268;
+    }
+
+.service-status {
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-left: 10px;
+}
+
+.status-enabled {
+    background: #d4edda;
+    color: #155724;
+}
+
+.status-disabled {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+/* Audio Preview */
+.tune-preview {
+    background: #e8f4fd;
+    border: 2px solid #1a73e8;
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 10px;
+    display: none;
+}
+
+    .tune-preview h5 {
+        margin: 0 0 10px 0;
+        color: #1a73e8;
+        font-size: 14px;
+    }
+
+.preview-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.preview-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-play {
+    background: #4caf50;
+    color: white;
+}
+
+    .btn-play:hover {
+        background: #45a049;
+    }
+
+.btn-stop {
+    background: #f44336;
+    color: white;
+}
+
+    .btn-stop:hover {
+        background: #d32f2f;
+    }
+
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: auto;
+}
+
+    .volume-control label {
+        font-size: 12px;
+        color: #666;
+    }
+
+    .volume-control input {
+        width: 80px;
+    }
+
+/* Service item với preview */
+.service-item.with-preview {
+    align-items: flex-start;
+}
+
+.service-actions.with-preview {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.tune-select-wrapper {
+    display: flex;
+    gap: 10px;
+    align-items: center;
 }
