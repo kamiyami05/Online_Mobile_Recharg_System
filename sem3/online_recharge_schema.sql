@@ -194,3 +194,7 @@ CREATE TABLE ContactPoints (
     Description NVARCHAR(255)
 );
 GO
+
+-- Add Column Name for RechargePlans table
+alter table rechargeplans
+add PlanName nvarchar(100) NOT NULL Default N'Unnamed Plan';
