@@ -9,10 +9,10 @@ namespace sem3.Models.ModelViews
         public string FullName { get; set; }
 
         [Required(ErrorMessage = "Please enter your phone number.")]
-        [RegularExpression(@"^\d{10}$", ErrorMessage = "Phone number must be 10 digits.")]
+        [RegularExpression(@"^(03|05|07|08|09)\d{8}$",
+            ErrorMessage = "Invalid phone number format. (10 digits, starting with 03, 05, 07, 08, or 09)")]
         public string Phone { get; set; }
 
-        [Required(ErrorMessage = "Please enter your email address.")]
         [EmailAddress(ErrorMessage = "Invalid email format.")]
         public string Email { get; set; }
 

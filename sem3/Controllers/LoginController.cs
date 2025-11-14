@@ -22,7 +22,8 @@ namespace sem3.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = _db.Users.FirstOrDefault(u => u.Email == model.Email);
+                var user = _db.Users.FirstOrDefault(u => u.MobileNumber == model.PhoneNumber);
+
                 if (user != null && VerifyPassword(model.Password, user.PasswordHash))
                 {
                     var role = _db.Roles.FirstOrDefault(r => r.RoleID == user.RoleID);
@@ -45,7 +46,7 @@ namespace sem3.Controllers
                     return RedirectToAction("Index", "Home");
                 }
 
-                ModelState.AddModelError("", "Incorrect mobile number or password.");
+                ModelState.AddModelError("", "Incorrect phone number or password.");
             }
             return View(model);
         }
@@ -65,13 +66,13 @@ namespace sem3.Controllers
         }
 
         [HttpPost]
-        public ActionResult Register(Register model)
+        public ActionResult Register(Register model) // model bây giờ chỉ chứa 3 trường
         {
             if (ModelState.IsValid)
             {
-                if (_db.Users.Any(u => u.Email == model.Email))
+                if (_db.Users.Any(u => u.MobileNumber == model.Phone))
                 {
-                    ModelState.AddModelError("", "Email already exists.");
+                    ModelState.AddModelError("", "Phone number already exists.");
                     return View(model);
                 }
 
@@ -79,11 +80,12 @@ namespace sem3.Controllers
                 {
                     FullName = model.FullName,
                     MobileNumber = model.Phone,
-                    Email = model.Email,
                     PasswordHash = HashPassword(model.Password),
-                    RoleID = 2, // Mặc định là User
-                    Address = model.Address,
-                    RegistrationDate = DateTime.Now
+                    RoleID = 2,
+                    RegistrationDate = DateTime.Now,
+
+                    Email = null,
+                    Address = null
                 };
 
                 _db.Users.Add(newUser);

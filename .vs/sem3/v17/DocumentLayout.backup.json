@@ -1,50 +1,30 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\asp\\sem3\\",
+  "WorkspaceRootPath": "C:\\Users\\duc47\\OneDrive\\M\u00E1y t\u00EDnh\\Online_Mobile_Recharge_System\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|d:\\asp\\sem3\\sem3\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|c:\\users\\duc47\\onedrive\\m\u00E1y t\u00EDnh\\online_mobile_recharge_system\\sem3\\models\\modelviews\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|solutionrelative:sem3\\models\\modelviews\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|c:\\users\\duc47\\onedrive\\m\u00E1y t\u00EDnh\\online_mobile_recharge_system\\sem3\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|solutionrelative:sem3\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|d:\\asp\\sem3\\sem3\\views\\profile\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|solutionrelative:sem3\\views\\profile\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|d:\\asp\\sem3\\sem3\\controllers\\profilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|solutionrelative:sem3\\controllers\\profilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|d:\\asp\\sem3\\sem3\\models\\modelviews\\changeemail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|solutionrelative:sem3\\models\\modelviews\\changeemail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|d:\\asp\\sem3\\sem3\\models\\modelviews\\changepassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|solutionrelative:sem3\\models\\modelviews\\changepassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|d:\\asp\\sem3\\sem3\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|c:\\users\\duc47\\onedrive\\m\u00E1y t\u00EDnh\\online_mobile_recharge_system\\sem3\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|solutionrelative:sem3\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|d:\\asp\\sem3\\sem3\\models\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|solutionrelative:sem3\\models\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|c:\\users\\duc47\\onedrive\\m\u00E1y t\u00EDnh\\online_mobile_recharge_system\\sem3\\views\\login\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|solutionrelative:sem3\\views\\login\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|d:\\asp\\sem3\\sem3\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|solutionrelative:sem3\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|c:\\users\\duc47\\onedrive\\m\u00E1y t\u00EDnh\\online_mobile_recharge_system\\sem3\\views\\login\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|solutionrelative:sem3\\views\\login\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|d:\\asp\\sem3\\sem3\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|C:\\Users\\duc47\\OneDrive\\M\u00E1y t\u00EDnh\\Online_Mobile_Recharge_System\\sem3\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|solutionrelative:sem3\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|d:\\asp\\sem3\\sem3\\models\\modelviews\\userm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|solutionrelative:sem3\\models\\modelviews\\userm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|D:\\asp\\sem3\\sem3\\content\\client\\layout.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{C0D5428E-C12D-46C0-8DAB-E3F1D7A65537}|sem3\\sem3.csproj|solutionrelative:sem3\\content\\client\\layout.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -54,148 +34,88 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ChangePassword.cs",
-              "DocumentMoniker": "D:\\asp\\sem3\\sem3\\Models\\ModelViews\\ChangePassword.cs",
-              "RelativeDocumentMoniker": "sem3\\Models\\ModelViews\\ChangePassword.cs",
-              "ToolTip": "D:\\asp\\sem3\\sem3\\Models\\ModelViews\\ChangePassword.cs",
-              "RelativeToolTip": "sem3\\Models\\ModelViews\\ChangePassword.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-07T04:21:27.405Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{6324226f-61b6-4f28-92ee-18d4b5fe1e48}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "ChangeEmail.cs",
-              "DocumentMoniker": "D:\\asp\\sem3\\sem3\\Models\\ModelViews\\ChangeEmail.cs",
-              "RelativeDocumentMoniker": "sem3\\Models\\ModelViews\\ChangeEmail.cs",
-              "ToolTip": "D:\\asp\\sem3\\sem3\\Models\\ModelViews\\ChangeEmail.cs",
-              "RelativeToolTip": "sem3\\Models\\ModelViews\\ChangeEmail.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-07T04:20:59.171Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\asp\\sem3\\sem3\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "sem3\\Views\\Home\\Index.cshtml",
-              "ToolTip": "D:\\asp\\sem3\\sem3\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "sem3\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "C:\\Users\\duc47\\OneDrive\\M\u00E1y t\u00EDnh\\Online_Mobile_Recharge_System\\sem3\\Views\\Login\\Register.cshtml",
+              "RelativeDocumentMoniker": "sem3\\Views\\Login\\Register.cshtml",
+              "ToolTip": "C:\\Users\\duc47\\OneDrive\\M\u00E1y t\u00EDnh\\Online_Mobile_Recharge_System\\sem3\\Views\\Login\\Register.cshtml",
+              "RelativeToolTip": "sem3\\Views\\Login\\Register.cshtml",
+              "ViewState": "AgIAADYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-07T03:57:42.923Z",
+              "WhenOpened": "2025-11-14T03:48:30.623Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "User.cs",
-              "DocumentMoniker": "D:\\asp\\sem3\\sem3\\Models\\Entities\\User.cs",
-              "RelativeDocumentMoniker": "sem3\\Models\\Entities\\User.cs",
-              "ToolTip": "D:\\asp\\sem3\\sem3\\Models\\Entities\\User.cs",
-              "RelativeToolTip": "sem3\\Models\\Entities\\User.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-07T03:29:24.91Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "D:\\asp\\sem3\\sem3\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "sem3\\Controllers\\HomeController.cs",
-              "ToolTip": "D:\\asp\\sem3\\sem3\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "sem3\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-07T03:27:46.001Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "LoginController.cs",
-              "DocumentMoniker": "D:\\asp\\sem3\\sem3\\Controllers\\LoginController.cs",
-              "RelativeDocumentMoniker": "sem3\\Controllers\\LoginController.cs",
-              "ToolTip": "D:\\asp\\sem3\\sem3\\Controllers\\LoginController.cs",
-              "RelativeToolTip": "sem3\\Controllers\\LoginController.cs",
-              "ViewState": "AgIAAFAAAAAAAAAAAAAwwH4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-07T03:27:40.762Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "UserM.cs",
-              "DocumentMoniker": "D:\\asp\\sem3\\sem3\\Models\\ModelViews\\UserM.cs",
-              "RelativeDocumentMoniker": "sem3\\Models\\ModelViews\\UserM.cs",
-              "ToolTip": "D:\\asp\\sem3\\sem3\\Models\\ModelViews\\UserM.cs",
-              "RelativeToolTip": "sem3\\Models\\ModelViews\\UserM.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-07T03:27:16.968Z",
+              "DocumentIndex": 2,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\duc47\\OneDrive\\M\u00E1y t\u00EDnh\\Online_Mobile_Recharge_System\\sem3\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "sem3\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\duc47\\OneDrive\\M\u00E1y t\u00EDnh\\Online_Mobile_Recharge_System\\sem3\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "sem3\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-14T03:45:51.439Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\asp\\sem3\\sem3\\Views\\Profile\\Index.cshtml",
-              "RelativeDocumentMoniker": "sem3\\Views\\Profile\\Index.cshtml",
-              "ToolTip": "D:\\asp\\sem3\\sem3\\Views\\Profile\\Index.cshtml",
-              "RelativeToolTip": "sem3\\Views\\Profile\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAeAAAAAAAAAA==",
+              "DocumentMoniker": "C:\\Users\\duc47\\OneDrive\\M\u00E1y t\u00EDnh\\Online_Mobile_Recharge_System\\sem3\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "sem3\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\duc47\\OneDrive\\M\u00E1y t\u00EDnh\\Online_Mobile_Recharge_System\\sem3\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "sem3\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-07T03:19:20.426Z",
+              "WhenOpened": "2025-11-14T03:38:24.582Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ProfileController.cs",
-              "DocumentMoniker": "D:\\asp\\sem3\\sem3\\Controllers\\ProfileController.cs",
-              "RelativeDocumentMoniker": "sem3\\Controllers\\ProfileController.cs",
-              "ToolTip": "D:\\asp\\sem3\\sem3\\Controllers\\ProfileController.cs*",
-              "RelativeToolTip": "sem3\\Controllers\\ProfileController.cs*",
-              "ViewState": "AgIAAKAAAAAAAAAAAAAkwAUAAAAgAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "Login.cs",
+              "DocumentMoniker": "C:\\Users\\duc47\\OneDrive\\M\u00E1y t\u00EDnh\\Online_Mobile_Recharge_System\\sem3\\Models\\ModelViews\\Login.cs",
+              "RelativeDocumentMoniker": "sem3\\Models\\ModelViews\\Login.cs",
+              "ToolTip": "C:\\Users\\duc47\\OneDrive\\M\u00E1y t\u00EDnh\\Online_Mobile_Recharge_System\\sem3\\Models\\ModelViews\\Login.cs",
+              "RelativeToolTip": "sem3\\Models\\ModelViews\\Login.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-07T03:19:11.606Z",
+              "WhenOpened": "2025-11-14T03:30:39.018Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Layout.css",
-              "DocumentMoniker": "D:\\asp\\sem3\\sem3\\Content\\Client\\Layout.css",
-              "RelativeDocumentMoniker": "sem3\\Content\\Client\\Layout.css",
-              "ToolTip": "D:\\asp\\sem3\\sem3\\Content\\Client\\Layout.css",
-              "RelativeToolTip": "sem3\\Content\\Client\\Layout.css",
-              "ViewState": "AgIAAGgAAAAAAAAAAAAAAIMAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-11-06T14:32:46.158Z"
+              "DocumentIndex": 4,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\duc47\\OneDrive\\M\u00E1y t\u00EDnh\\Online_Mobile_Recharge_System\\sem3\\Views\\Login\\Login.cshtml",
+              "RelativeDocumentMoniker": "sem3\\Views\\Login\\Login.cshtml",
+              "ToolTip": "C:\\Users\\duc47\\OneDrive\\M\u00E1y t\u00EDnh\\Online_Mobile_Recharge_System\\sem3\\Views\\Login\\Login.cshtml",
+              "RelativeToolTip": "sem3\\Views\\Login\\Login.cshtml",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAACIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-12T04:23:37.804Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "D:\\asp\\sem3\\sem3\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "sem3\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "D:\\asp\\sem3\\sem3\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "sem3\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAACUAAAAAAAAAAAAmwEUAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-05T10:22:46.526Z",
+              "Title": "LoginController.cs",
+              "DocumentMoniker": "C:\\Users\\duc47\\OneDrive\\M\u00E1y t\u00EDnh\\Online_Mobile_Recharge_System\\sem3\\Controllers\\LoginController.cs",
+              "RelativeDocumentMoniker": "sem3\\Controllers\\LoginController.cs",
+              "ToolTip": "C:\\Users\\duc47\\OneDrive\\M\u00E1y t\u00EDnh\\Online_Mobile_Recharge_System\\sem3\\Controllers\\LoginController.cs",
+              "RelativeToolTip": "sem3\\Controllers\\LoginController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-12T03:04:10.971Z",
               "EditorCaption": ""
             }
           ]

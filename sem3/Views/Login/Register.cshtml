@@ -1,4 +1,4 @@
-﻿﻿@model sem3.Models.ModelViews.Register
+﻿@model sem3.Models.ModelViews.Register
 
 @{
     ViewBag.Title = "Register";
@@ -17,7 +17,6 @@
         @Html.ValidationSummary(false, "", new { @class = "text-red-500" })
 
         <div class="form-columns">
-            <!-- Cột trái: Thông tin cá nhân -->
             <div class="form-column">
                 <div class="column-header">
                     <i class="fas fa-user-circle"></i>
@@ -31,19 +30,13 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="Email">Email</label>
-                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email", placeholder = "Enter your email", required = "required" })
-                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-red-500" })
-                </div>
-
-                <div class="form-group">
                     <label for="MobileNumber">Phone</label>
                     @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", placeholder = "Enter your phone number", required = "required" })
                     @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-red-500" })
                 </div>
+
             </div>
 
-            <!-- Cột phải: Thông tin bảo mật -->
             <div class="form-column">
                 <div class="column-header">
                     <i class="fas fa-shield-alt"></i>
@@ -62,11 +55,6 @@
                     @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-red-500" })
                 </div>
 
-                <div class="form-group">
-                    <label for="Address">Address (optional)</label>
-                    @Html.TextBoxFor(m => m.Address, new { @class = "form-control", placeholder = "Enter your address" })
-                    @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-red-500" })
-                </div>
             </div>
         </div>
 
@@ -79,5 +67,3 @@
         </div>
     }
 </div>
-
-<script src="~/Scripts/login.js"></script>
