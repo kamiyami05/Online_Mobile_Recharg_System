@@ -32,13 +32,6 @@
             <input id="Email" class="readonly" value="@Model.Email" disabled />
         </div>
 
-        <div class="password-row">
-            <div class="profile-row">
-                <label>Password:</label>
-                <input type="password" value="********" class="readonly" disabled />
-            </div>
-        </div>
-
         <div class="profile-row">
             <label>Address:</label>
             <input id="Address" class="readonly" value="@Model.Address" disabled />
@@ -73,41 +66,171 @@
                 </label>
             </div>
         </div>
-
         <!-- Caller Tunes Service -->
         <div class="service-item with-preview">
             <div class="service-info">
                 <h4>Caller Tunes</h4>
                 <p>Customize your call waiting music</p>
-            </div>
-            <div class="service-actions with-preview">
-                <span id="callerTuneStatus" class="service-status @(ViewBag.CallerTunesStatus ? "status-enabled" : "status-disabled")">
-                    @(ViewBag.CallerTunesStatus ? "Enabled" : "Disabled")
-                </span>
-                <div class="tune-select-wrapper">
-                    <select id="callerTuneSelect" class="tune-select">
-                        <option value="Default" @(ViewBag.SelectedTune == "Default" ? "selected" : "")>Default (No music)</option>
-                        <option value="Waiting.mp3" @(ViewBag.SelectedTune == "Waiting.mp3" ? "selected" : "")>Waiting Music</option>
-                    </select>
-                    <button id="saveTuneBtn" class="service-btn btn-save" style="display: none;">Save</button>
-                    <button id="cancelTuneBtn" class="service-btn btn-cancel" style="display: none;">Cancel</button>
+                <div class="current-selection">
+                    <small>
+                        Current: <span id="currentTuneName">
+                            @if (ViewBag.SelectedTune == "Default")
+                            {
+                                <text>Default (No music)</text>
+                            }
+                            else if (ViewBag.SelectedTune == "Waiting.mp3")
+                            {
+                                <text>Waiting Music</text>
+                            }
+                            else if (!string.IsNullOrEmpty(ViewBag.SelectedTune))
+                            {
+                                <text>My Custom Tune</text>
+                            }
+                            else
+                            {
+                                <text>Default (No music)</text>
+                            }
+                        </span>
+                    </small>
                 </div>
 
                 <!-- Audio Preview Panel -->
                 <div id="tunePreview" class="tune-preview">
-                    <h5><i class="fas fa-music"></i> Preview Caller Tune</h5>
+                    <div class="preview-header">
+                        <h5><i class="fas fa-headphones"></i> Preview</h5>
+                        <div class="preview-info">
+                            <span id="previewTuneName">-</span>
+                            <span id="previewDuration">-</span>
+                        </div>
+                    </div>
                     <div class="preview-controls">
                         <button id="playPreviewBtn" class="preview-btn btn-play">
-                            <i class="fas fa-play"></i> Play Preview
+                            <i class="fas fa-pause"></i> Pause Preview
                         </button>
                         <button id="stopPreviewBtn" class="preview-btn btn-stop">
-                            <i class="fas fa-stop"></i> Stop
+                            <i class="fas fa-stop"></i> Canecl
                         </button>
+                        <div class="progress-container">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="progressFill"></div>
+                            </div>
+                            <span class="time-display">
+                                <span id="currentTime">0:00</span> / <span id="totalTime">0:00</span>
+                            </span>
+                        </div>
                         <div class="volume-control">
-                            <label for="volumeSlider">Volume:</label>
+                            <i class="fas fa-volume-up"></i>
                             <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="0.7">
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div class="service-actions with-preview">
+                <!-- Tune Selection Cards -->
+                <div class="tune-selection-cards">
+                    <!-- Default Option -->
+                    <div class="tune-card @(ViewBag.SelectedTune == "Default" ? "selected" : "")" data-tune-value="Default">
+                        <div class="tune-card-icon">
+                            <i class="fas fa-ban"></i>
+                        </div>
+                        <div class="tune-card-content">
+                            <h5>No Music</h5>
+                            <p>Default call waiting</p>
+                        </div>
+                        <div class="tune-card-check">
+                            <i class="fas fa-check"></i>
+                        </div>
+                    </div>
+
+                    <!-- Waiting Music Option -->
+                    <div class="tune-card @(ViewBag.SelectedTune == "Waiting.mp3" ? "selected" : "")" data-tune-value="Waiting.mp3">
+                        <div class="tune-card-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <div class="tune-card-content">
+                            <h5>Waiting Music</h5>
+                            <p>Classic waiting tone</p>
+                        </div>
+                        <div class="tune-card-check">
+                            <i class="fas fa-check"></i>
+                        </div>
+                    </div>
+
+                    <!-- Custom Upload Option -->
+                    <div class="tune-card upload-card @(ViewBag.SelectedTune != "Default" && ViewBag.SelectedTune != "Waiting.mp3" && !string.IsNullOrEmpty(ViewBag.SelectedTune) ? "selected" : "")"
+                         data-tune-value="@(ViewBag.SelectedTune != "Default" && ViewBag.SelectedTune != "Waiting.mp3" && !string.IsNullOrEmpty(ViewBag.SelectedTune) ? ViewBag.SelectedTune : "upload")">
+                        <div class="tune-card-icon">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </div>
+                        <div class="tune-card-content">
+                            @if (ViewBag.SelectedTune != "Default" && ViewBag.SelectedTune != "Waiting.mp3" && !string.IsNullOrEmpty(ViewBag.SelectedTune))
+                            {
+                                <h5>My Custom Tune</h5>
+                                <p>Your uploaded music</p>
+                                <div class="file-actions">
+                                    <button class="replace-btn" data-tune-value="@ViewBag.SelectedTune">
+                                        <i class="fas fa-sync"></i> Replace
+                                    </button>
+                                    <button class="remove-btn" data-tune-value="@ViewBag.SelectedTune">
+                                        <i class="fas fa-trash"></i> Remove
+                                    </button>
+                                </div>
+                            }
+                            else
+                            {
+                                <h5>Upload Your Music</h5>
+                                <p>Use your own MP3 file</p>
+                            }
+                        </div>
+                        <div class="tune-card-check">
+                            <i class="fas fa-check"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- File Upload Section -->
+                <div id="fileUploadSection" class="file-upload-section" style="display: none;">
+                    <div class="upload-header">
+                        <h5><i class="fas fa-upload"></i> Upload Your Music</h5>
+                        <button class="close-upload" id="closeUploadBtn">&times;</button>
+                    </div>
+
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-placeholder">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Drag & drop your MP3 file here</p>
+                            <span>or</span>
+                            <button class="browse-btn" id="browseBtn">Browse Files</button>
+                            <input type="file" id="tuneFileInput" accept=".mp3" style="display: none;" />
+                        </div>
+                    </div>
+
+                    <div class="file-info" id="fileInfo" style="display: none;">
+                        <div class="file-details">
+                            <i class="fas fa-file-audio"></i>
+                            <div class="file-meta">
+                                <span id="fileName" class="file-name"></span>
+                                <span id="fileSize" class="file-size"></span>
+                            </div>
+                        </div>
+                        <button id="uploadTuneBtn" class="service-btn btn-upload">
+                            <i class="fas fa-upload"></i> Upload & Set
+                        </button>
+                    </div>
+
+                    <div class="upload-validation">
+                        <small><i class="fas fa-info-circle"></i> Only MP3 files, max 10MB. This will replace your current custom tune.</small>
+                    </div>
+                </div>             
+                <!-- Action Buttons -->
+                <div class="action-buttons" id="actionButtons" style="display: none;">
+                    <button id="saveTuneBtn" class="service-btn btn-save">
+                        <i class="fas fa-check"></i> Save Changes
+                    </button>
+                    <button id="cancelTuneBtn" class="service-btn btn-cancel">
+                        <i class="fas fa-times"></i> Cancel
+                    </button>
                 </div>
             </div>
         </div>
@@ -116,12 +239,12 @@
 
 <script src="~/Scripts/profile.js"></script>
 <script>
- // Initialize services when document is ready
- $(document).ready(function() {
-     initializeServices(
-         @Json.Encode(ViewBag.DoNotDisturbStatus),
-         '@ViewBag.SelectedTune',
-         @Json.Encode(ViewBag.CallerTunesStatus)
-     );
- });
+    // Initialize services when document is ready
+    $(document).ready(function() {
+        initializeServices(
+            @Json.Encode(ViewBag.DoNotDisturbStatus),
+            '@ViewBag.SelectedTune',
+            @Json.Encode(ViewBag.CallerTunesStatus)
+        );
+    });
 </script>

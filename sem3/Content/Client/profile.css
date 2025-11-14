@@ -1,10 +1,53 @@
 ﻿.profile-wrapper {
-    width: 600px;
+    width: 700px;
     margin: 40px auto;
     padding: 25px;
     background: #fff;
     border-radius: 12px;
     box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+}
+
+    .profile-wrapper h2 {
+        text-align: center;
+        font-size: 2.5rem;
+        font-weight: 300;
+        color: #2c3e50;
+        margin-bottom: 2rem;
+        position: relative;
+        padding-bottom: 15px;
+    }
+
+        .profile-wrapper h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, #3498db, #2980b9, #3498db);
+            border-radius: 1px;
+        }
+
+        .profile-wrapper h2:hover {
+            transform: translateY(-2px);
+            transition: all 0.3s ease;
+        }
+
+    .profile-wrapper h2 {
+        animation: smoothAppear 0.6s ease-out;
+    }
+
+@keyframes smoothAppear {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .profile-row {
@@ -124,6 +167,46 @@
 .swal2-html-container {
     font-size: 14px !important;
     color: #666 !important;
+}
+
+/* Đảm bảo nút trong SweetAlert2 có style đồng bộ */
+.swal2-confirm.btn-confirm,
+.swal2-cancel.btn-cancel{
+    min-width: 100px !important;
+    padding: 10px 20px !important;
+    font-weight: 500 !important;
+    border-radius: 6px !important;
+    margin: 0 8px !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.2s ease;
+}
+
+.swal2-confirm.btn-confirm {
+    background: #1a73e8 !important;
+    color: white !important;
+}
+
+    .swal2-confirm.btn-confirm:hover {
+        background: #0d62d9 !important;
+        transform: translateY(-1px);
+    }
+
+.swal2-cancel.btn-cancel {
+    background: #6c757d !important;
+    color: white !important;
+}
+
+    .swal2-cancel.btn-cancel:hover {
+        background: #5a6268 !important;
+        transform: translateY(-1px);
+    }
+
+/* Căn giữa nút */
+.swal2-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 20px;
 }
 
 /* Password field row */
@@ -365,4 +448,629 @@ input:checked + .toggle-slider {
     display: flex;
     gap: 10px;
     align-items: center;
+}
+
+/* File Upload Section */
+.file-upload-section {
+    background: #f8f9fa;
+    border: 2px dashed #dee2e6;
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+    .file-upload-section input[type="file"] {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+.file-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+#fileName {
+    font-size: 14px;
+    color: #666;
+    flex: 1;
+}
+
+.btn-upload {
+    background: #28a745 !important;
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+    .btn-upload:disabled {
+        background: #6c757d !important;
+        cursor: not-allowed;
+    }
+
+    .btn-upload:hover:not(:disabled) {
+        background: #218838 !important;
+    }
+
+.file-validation {
+    text-align: center;
+}
+
+    .file-validation small {
+        color: #6c757d;
+        font-size: 11px;
+    }
+
+/* Custom file selected state */
+.file-upload-section.has-file {
+    border-color: #28a745;
+    background: #f8fff9;
+}
+
+/* Enhanced Caller Tunes Styles */
+
+.current-selection {
+    margin-top: 8px;
+}
+
+    .current-selection small {
+        color: #666;
+        font-size: 12px;
+    }
+
+#currentTuneName {
+    font-weight: bold;
+    color: #1a73e8;
+}
+
+/* Tune Selection Cards */
+.tune-selection-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.tune-card {
+    background: white;
+    border: 2px solid #e1e1e1;
+    border-radius: 12px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+    .tune-card:hover {
+        border-color: #1a73e8;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .tune-card.selected {
+        border-color: #4caf50;
+        background: linear-gradient(135deg, #f8fff8 0%, #f0fff0 100%);
+    }
+
+.tune-card-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+}
+
+.tune-card.upload-card .tune-card-icon {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.tune-card-content {
+    flex: 1;
+}
+
+    .tune-card-content h5 {
+        margin: 0 0 5px 0;
+        color: #333;
+        font-size: 16px;
+    }
+
+    .tune-card-content p {
+        margin: 0;
+        color: #666;
+        font-size: 13px;
+    }
+
+.file-actions {
+    margin-top: 8px;
+    display: flex;
+    gap: 8px;
+}
+
+.replace-btn, .remove-btn {
+    padding: 4px 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: white;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+    .replace-btn:hover {
+        border-color: #1a73e8;
+        color: #1a73e8;
+    }
+
+    .remove-btn:hover {
+        border-color: #f44336;
+        color: #f44336;
+    }
+
+.tune-card-check {
+    opacity: 0;
+    color: #4caf50;
+    font-size: 16px;
+    transition: opacity 0.3s;
+}
+
+.tune-card.selected .tune-card-check {
+    opacity: 1;
+}
+
+/* Enhanced File Upload Section */
+.file-upload-section {
+    background: white;
+    border: 2px dashed #dee2e6;
+    border-radius: 12px;
+    padding: 0;
+    margin-top: 15px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.upload-header {
+    background: #f8f9fa;
+    padding: 15px 20px;
+    border-bottom: 1px solid #e1e1e1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .upload-header h5 {
+        margin: 0;
+        color: #333;
+        font-size: 16px;
+    }
+
+.close-upload {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #666;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .close-upload:hover {
+        background: #e9ecef;
+        color: #333;
+    }
+
+.upload-area {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+    .upload-area.drag-over {
+        background: #e8f4fd;
+        border-color: #1a73e8;
+    }
+
+.upload-placeholder {
+    color: #666;
+}
+
+    .upload-placeholder i {
+        font-size: 48px;
+        color: #6c757d;
+        margin-bottom: 15px;
+    }
+
+    .upload-placeholder p {
+        margin: 0 0 10px 0;
+        font-size: 16px;
+    }
+
+    .upload-placeholder span {
+        display: block;
+        margin: 10px 0;
+        color: #999;
+        font-size: 14px;
+    }
+
+.browse-btn {
+    background: #1a73e8;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+    .browse-btn:hover {
+        background: #0d62d9;
+        transform: translateY(-1px);
+    }
+
+.file-info {
+    padding: 20px;
+    border-top: 1px solid #e1e1e1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.file-details {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+    .file-details i {
+        font-size: 24px;
+        color: #1a73e8;
+    }
+
+.file-meta {
+    display: flex;
+    flex-direction: column;
+}
+
+.file-name {
+    font-weight: bold;
+    color: #333;
+    font-size: 14px;
+}
+
+.file-size {
+    color: #666;
+    font-size: 12px;
+}
+
+.upload-validation {
+    padding: 10px 20px;
+    background: #f8f9fa;
+    border-top: 1px solid #e1e1e1;
+    text-align: center;
+}
+
+    .upload-validation small {
+        color: #6c757d;
+        font-size: 12px;
+    }
+
+/* Enhanced Audio Preview */
+.tune-preview {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 12px;
+    padding: 0;
+    margin-top: 15px;
+    color: white;
+    overflow: hidden;
+}
+
+.preview-header {
+    padding: 15px 20px;
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .preview-header h5 {
+        margin: 0;
+        font-size: 16px;
+    }
+
+.preview-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-size: 12px;
+}
+
+#previewTuneName {
+    font-weight: bold;
+}
+
+#previewDuration {
+    opacity: 0.8;
+}
+
+.preview-controls {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.progress-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 4px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: white;
+    border-radius: 2px;
+    width: 0%;
+    transition: width 0.1s;
+}
+
+.time-display {
+    font-size: 12px;
+    opacity: 0.8;
+    min-width: 80px;
+    text-align: center;
+}
+
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+}
+
+    .volume-control i {
+        opacity: 0.8;
+    }
+
+    .volume-control input {
+        width: 100px;
+    }
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    justify-content: flex-end;
+}
+
+.service-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-save {
+    background: #4caf50;
+    color: white;
+}
+
+    .btn-save:hover {
+        background: #45a049;
+        transform: translateY(-1px);
+    }
+
+.btn-cancel {
+    background: #6c757d;
+    color: white;
+}
+
+    .btn-cancel:hover {
+        background: #5a6268;
+        transform: translateY(-1px);
+    }
+
+.save-btn {
+    margin-top: 10px;
+    width: 100%;
+    padding: 12px;
+    background: #4caf50 !important;
+    color: white;
+    border-radius: 6px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+    .save-btn:hover {
+        background: #45a049 !important;
+        transform: translateY(-1px);
+    }
+
+.cancel-btn {
+    margin-top: 0 !important;
+    width: 100%;
+    padding: 12px;
+    background: #f44336 !important;
+    color: white;
+    border-radius: 6px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+    .cancel-btn:hover {
+        background: #d32f2f !important;
+        transform: translateY(-1px);
+    }
+
+/* Preview nằm trong service-info */
+.service-info .tune-preview {
+    margin-top: 15px;
+    max-width: 80%;
+    width: 80%;
+}
+
+.service-info .preview-controls {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.service-info .progress-container {
+    flex: 1;
+    min-width: 200px;
+}
+
+.service-info .volume-control {
+    margin-left: 0;
+    flex-shrink: 0;
+}
+
+.swal-password-grid {
+    display: grid;
+    grid-template-columns: max-content 1fr; /* label | input */
+    gap: 8px 12px;
+    align-items: center;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+.swal-label {
+    text-align: right;
+    font-weight: 600;
+    color: #555;
+}
+
+.swal-password-popup .swal2-input {
+    margin: 0 !important; /* bỏ margin mặc định của SweetAlert */
+}
+
+/* Đảm bảo popup không bị quá rộng */
+.swal-password-popup {
+    padding: 20px !important;
+}
+
+.swal-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+    .swal-input-wrapper .swal2-input {
+        padding-right: 40px !important;
+        flex: 1;
+    }
+
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    cursor: pointer;
+    color: #666;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+    .toggle-password:hover {
+        color: #1a73e8;
+    }
+
+    .toggle-password.fa-eye-slash {
+        color: #999;
+    }
+
+/* ---------- Button Classes for SweetAlert ---------- */
+.btn-primary {
+    background: #1a73e8 !important;
+    color: white !important;
+    border: none !important;
+    padding: 10px 24px !important;
+    border-radius: 6px !important;
+    font-size: 14px !important;
+    margin: 0 8px !important;
+    cursor: pointer !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.2s ease;
+}
+
+    .btn-primary:hover {
+        background: #0d62d9 !important;
+        transform: translateY(-1px);
+    }
+
+.btn-secondary {
+    background: #6c757d !important;
+    color: white !important;
+    border: none !important;
+    padding: 10px 24px !important;
+    border-radius: 6px !important;
+    font-size: 14px !important;
+    margin: 0 8px !important;
+    cursor: pointer !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.2s ease;
+}
+
+    .btn-secondary:hover {
+        background: #5a6268 !important;
+        transform: translateY(-1px);
+    }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .service-info .preview-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .service-info .progress-container {
+        order: 3;
+    }
 }

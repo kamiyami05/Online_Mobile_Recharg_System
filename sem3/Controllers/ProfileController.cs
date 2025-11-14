@@ -3,6 +3,7 @@ using sem3.Models.Entities;
 using sem3.Models.ModelViews;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web.Mvc;
@@ -264,9 +265,11 @@ namespace sem3.Controllers
                 if (callerTunesService == null)
                     return Json(new { success = false, message = "Service not found" });
 
-                // Validate selected tune
+                // Validate selected tune - mở rộng cho phép cả file upload
                 var allowedTunes = new[] { "Default", "Waiting.mp3" };
-                if (!allowedTunes.Contains(selectedTune))
+                bool isUploadedFile = !allowedTunes.Contains(selectedTune) && selectedTune.StartsWith($"user_{sessionUser.UserID}_");
+
+                if (!isUploadedFile && !allowedTunes.Contains(selectedTune))
                     return Json(new { success = false, message = "Invalid tune selection" });
 
                 var existingSetting = _db.UserServiceSettings
@@ -274,12 +277,11 @@ namespace sem3.Controllers
 
                 if (existingSetting == null)
                 {
-                    // Tạo mới setting
                     var newSetting = new Models.Entities.UserServiceSetting
                     {
                         UserID = sessionUser.UserID,
                         ServiceID = callerTunesService.ServiceID,
-                        IsEnabled = selectedTune != "Default", // Enable nếu không phải Default
+                        IsEnabled = selectedTune != "Default",
                         SelectedTune = selectedTune,
                         UpdatedDate = DateTime.Now
                     };
@@ -287,7 +289,18 @@ namespace sem3.Controllers
                 }
                 else
                 {
-                    // Cập nhật setting
+                    // Nếu đang chuyển từ file upload sang default/waiting, xóa file cũ
+                    if (!string.IsNullOrEmpty(existingSetting.SelectedTune) &&
+                        existingSetting.SelectedTune != "Default" &&
+                        existingSetting.SelectedTune != "Waiting.mp3" &&
+                        selectedTune != existingSetting.SelectedTune)
+                    {
+                        var uploadsDir = Server.MapPath("~/Content/audio/uploads/");
+                        var oldFilePath = Path.Combine(uploadsDir, existingSetting.SelectedTune);
+                        if (System.IO.File.Exists(oldFilePath))
+                            System.IO.File.Delete(oldFilePath);
+                    }
+
                     existingSetting.SelectedTune = selectedTune;
                     existingSetting.IsEnabled = selectedTune != "Default";
                     existingSetting.UpdatedDate = DateTime.Now;
@@ -298,7 +311,7 @@ namespace sem3.Controllers
                 return Json(new
                 {
                     success = true,
-                    message = $"Caller tune updated to {selectedTune}",
+                    message = $"Caller tune updated to {(selectedTune == "Default" ? "Default" : "your custom tune")}",
                     selectedTune = selectedTune,
                     isEnabled = selectedTune != "Default"
                 });
@@ -306,6 +319,97 @@ namespace sem3.Controllers
             catch (Exception ex)
             {
                 return Json(new { success = false, message = ex.Message });
+            }
+        }
+
+        // POST: Profile/UploadCallerTune
+        [HttpPost]
+        public JsonResult UploadCallerTune()
+        {
+            try
+            {
+                if (Session["CurrentUser"] == null)
+                    return Json(new { success = false, message = "Session expired" });
+
+                var sessionUser = Session["CurrentUser"] as UserM;
+                var callerTunesService = _db.Services.FirstOrDefault(s => s.ServiceName == "Caller Tunes");
+
+                if (callerTunesService == null)
+                    return Json(new { success = false, message = "Service not found" });
+
+                if (Request.Files.Count == 0)
+                    return Json(new { success = false, message = "No file selected" });
+
+                var file = Request.Files[0];
+
+                // Validate file
+                if (file == null || file.ContentLength == 0)
+                    return Json(new { success = false, message = "Please select a valid file" });
+
+                // Check file type
+                if (Path.GetExtension(file.FileName).ToLower() != ".mp3")
+                    return Json(new { success = false, message = "Only MP3 files are allowed" });
+
+                // Check file size (max 10MB)
+                if (file.ContentLength > 10 * 1024 * 1024)
+                    return Json(new { success = false, message = "File size must be less than 10MB" });
+
+                // Create uploads directory if not exists
+                var uploadsDir = Server.MapPath("~/Content/audio/uploads/");
+                if (!Directory.Exists(uploadsDir))
+                    Directory.CreateDirectory(uploadsDir);
+
+                // Generate unique filename
+                var fileName = $"user_{sessionUser.UserID}_{DateTime.Now:yyyyMMddHHmmss}_{Path.GetFileName(file.FileName)}";
+                var filePath = Path.Combine(uploadsDir, fileName);
+
+                // Save file
+                file.SaveAs(filePath);
+
+                // Update user's caller tune setting
+                var existingSetting = _db.UserServiceSettings
+                    .FirstOrDefault(us => us.UserID == sessionUser.UserID && us.ServiceID == callerTunesService.ServiceID);
+
+                if (existingSetting == null)
+                {
+                    var newSetting = new Models.Entities.UserServiceSetting
+                    {
+                        UserID = sessionUser.UserID,
+                        ServiceID = callerTunesService.ServiceID,
+                        IsEnabled = true,
+                        SelectedTune = fileName,
+                        UpdatedDate = DateTime.Now
+                    };
+                    _db.UserServiceSettings.Add(newSetting);
+                }
+                else
+                {
+                    // Delete old file if exists
+                    if (!string.IsNullOrEmpty(existingSetting.SelectedTune) && existingSetting.SelectedTune != "Default" && existingSetting.SelectedTune != "Waiting.mp3")
+                    {
+                        var oldFilePath = Path.Combine(uploadsDir, existingSetting.SelectedTune);
+                        if (System.IO.File.Exists(oldFilePath))
+                            System.IO.File.Delete(oldFilePath);
+                    }
+
+                    existingSetting.SelectedTune = fileName;
+                    existingSetting.IsEnabled = true;
+                    existingSetting.UpdatedDate = DateTime.Now;
+                }
+
+                _db.SaveChanges();
+
+                return Json(new
+                {
+                    success = true,
+                    message = "Caller tune uploaded successfully!",
+                    selectedTune = fileName,
+                    isEnabled = true
+                });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = "Upload failed: " + ex.Message });
             }
         }
 
