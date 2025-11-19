@@ -4,31 +4,29 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1098a546c43e46aa9570aa37c3909823" Name="Diagram1">
+      <Diagram DiagramId="26fd003b00a54f629337ded48233ab4e" Name="Diagram1">
         <EntityTypeShape EntityType="OnlineRechargeDBModel.AdminUser" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="OnlineRechargeDBModel.ContactPoint" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="OnlineRechargeDBModel.Feedback" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="OnlineRechargeDBModel.PaymentDetail" Width="1.5" PointX="7.5" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="OnlineRechargeDBModel.PostpaidBill" Width="1.5" PointX="7.5" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="OnlineRechargeDBModel.RechargePlan" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="OnlineRechargeDBModel.Role" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="OnlineRechargeDBModel.Service" Width="1.5" PointX="6" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="OnlineRechargeDBModel.SiteContent" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="OnlineRechargeDBModel.Transaction" Width="1.5" PointX="5.25" PointY="10.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="OnlineRechargeDBModel.TransactionScript" Width="1.5" PointX="7.5" PointY="14" IsExpanded="true" />
-        <EntityTypeShape EntityType="OnlineRechargeDBModel.User" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="OnlineRechargeDBModel.UserService" Width="1.5" PointX="10.25" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="OnlineRechargeDBModel.UserServiceSetting" Width="1.5" PointX="8.25" PointY="4.125" IsExpanded="true" />
-        <AssociationConnector Association="OnlineRechargeDBModel.FK__Feedback__UserID__6B24EA82" ManuallyRouted="false" />
-        <AssociationConnector Association="OnlineRechargeDBModel.FK__PaymentDe__Trans__5165187F" ManuallyRouted="false" />
-        <AssociationConnector Association="OnlineRechargeDBModel.FK__PostpaidB__Payme__571DF1D5" ManuallyRouted="false" />
-        <AssociationConnector Association="OnlineRechargeDBModel.FK__Users__RoleID__3D5E1FD2" ManuallyRouted="false" />
-        <AssociationConnector Association="OnlineRechargeDBModel.FK__UserServi__Servi__60A75C0F" ManuallyRouted="false" />
-        <AssociationConnector Association="OnlineRechargeDBModel.FK__UserServi__Servi__6754599E" ManuallyRouted="false" />
-        <AssociationConnector Association="OnlineRechargeDBModel.FK__Transacti__Trans__4CA06362" ManuallyRouted="false" />
-        <AssociationConnector Association="OnlineRechargeDBModel.FK__Transacti__UserI__48CFD27E" ManuallyRouted="false" />
-        <AssociationConnector Association="OnlineRechargeDBModel.FK__UserServi__UserI__5FB337D6" ManuallyRouted="false" />
-        <AssociationConnector Association="OnlineRechargeDBModel.FK__UserServi__UserI__66603565" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="OnlineRechargeDBModel.ContactPoint" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineRechargeDBModel.Feedback" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineRechargeDBModel.PaymentDetail" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineRechargeDBModel.PostpaidBill" Width="1.5" PointX="5.25" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineRechargeDBModel.RechargePlan" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineRechargeDBModel.Service" Width="1.5" PointX="3.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineRechargeDBModel.SiteContent" Width="1.5" PointX="8.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineRechargeDBModel.Transaction" Width="1.5" PointX="3" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineRechargeDBModel.TransactionScript" Width="1.5" PointX="5.25" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineRechargeDBModel.User" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineRechargeDBModel.UserService" Width="1.5" PointX="8" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineRechargeDBModel.UserServiceSetting" Width="1.5" PointX="6" PointY="4.125" IsExpanded="true" />
+        <AssociationConnector Association="OnlineRechargeDBModel.FK__Feedback__UserID__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineRechargeDBModel.FK__PaymentDe__Trans__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineRechargeDBModel.FK__PostpaidB__Payme__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineRechargeDBModel.FK__UserServi__Servi__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineRechargeDBModel.FK__UserServi__Servi__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineRechargeDBModel.FK__Transacti__Trans__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineRechargeDBModel.FK__Transacti__UserI__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineRechargeDBModel.FK__UserServi__UserI__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineRechargeDBModel.FK__UserServi__UserI__619B8048" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

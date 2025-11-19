@@ -10,7 +10,6 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
     @Styles.Render("~/Content/Client/Layout")
     @Styles.Render("~/Content/Client/layout-custom")
-    @Styles.Render("~/Content/css")
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
@@ -19,60 +18,75 @@
                 <i class="fas fa-bolt text-warning"></i> Recharge System
             </a>
 
-            <div class="navbar-nav ms-auto d-flex align-items-center">
+            <!-- Mobile menu button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                <i class="fas fa-bars"></i>
+            </button>
 
-                <div class="me-3">
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <div class="navbar-nav ms-auto d-flex align-items-center w-100">
 
-                    <div class="d-flex">
-                        <a class="nav-link" href="@Url.Action("Index", "Home")">
-                            <i class="fas fa-home"></i> Home
-                        </a>
-                        <a class="nav-link" href="@Url.Action("Index", "AboutUS")">
-                            <i class="fas fa-info-circle"></i> About Us
-                        </a>
-                        <a class="nav-link" href="@Url.Action("Index", "ContactUs")">
-                            <i class="fas fa-envelope"></i> Contact Us
-                        </a>
-                        <a class="nav-link" href="@Url.Action("Index", "Feedback")">
-                            <i class="fas fa-comments"></i> Feedback
-                        </a>
+                    <!-- Phần menu links -->
+                    <div class="navbar-links-container">
+                        <div class="navbar-links-row">
+                            <a class="nav-link" href="@Url.Action("Index", "Home")">
+                                <i class="fas fa-home"></i> Home
+                            </a>
+                            <a class="nav-link" href="@Url.Action("Index", "AboutUS")">
+                                <i class="fas fa-info-circle"></i> About Us
+                            </a>
+                            <a class="nav-link" href="@Url.Action("Index", "ContactUs")">
+                                <i class="fas fa-envelope"></i> Contact Us
+                            </a>
+                            <a class="nav-link" href="@Url.Action("Index", "Feedback")">
+                                <i class="fas fa-comments"></i> Feedback
+                            </a>
+                        </div>
+
+                        <div class="navbar-links-row">
+                            <a class="nav-link" href="@Url.Action("Index", "SiteMap")">
+                                <i class="fas fa-sitemap"></i> Site Map
+                            </a>
+                            <a class="nav-link" href="@Url.Action("Index", "BillPayment")">
+                                <i class="fas fa-file-invoice-dollar"></i> Post Bill Payment
+                            </a>
+                            <a class="nav-link" href="@Url.Action("Index", "Recharge")">
+                                <i class="fas fa-mobile-alt"></i> Online Recharge
+                            </a>
+                            <a class="nav-link" href="@Url.Action("Index", "CustomerCare")">
+                                <i class="fas fa-headset"></i> Customer Care
+                            </a>
+                        </div>
                     </div>
 
-                    <div class="d-flex">
-                        <a class="nav-link" href="@Url.Action("Index", "SiteMap")">
-                            <i class="fas fa-sitemap"></i> Site Map
-                        </a>
-                        <a class="nav-link" href="@Url.Action("Index", "BillPayment")">
-                            <i class="fas fa-file-invoice-dollar"></i> Post Bill Payment
-                        </a>
-                        <a class="nav-link" href="@Url.Action("Index", "Recharge")">
-                            <i class="fas fa-mobile-alt"></i> Online Recharge
-                        </a>
-                        <a class="nav-link" href="@Url.Action("Index", "CustomerCare")">
-                            <i class="fas fa-headset"></i> Customer Care
-                        </a>
-                    </div>
+                    <!-- Phần auth buttons / user info -->
+                    @if (Session["CurrentUser"] != null)
+                    {
+                        var user = Session["CurrentUser"] as sem3.Models.ModelViews.UserM;
+
+                        <div class="navbar-user-section">
+                            <a class="nav-link text-dark fw-bold" href="@Url.Action("Index", "Profile")" title="View Profile">
+                                <i class="fas fa-user"></i> Hello, @user.FullName
+                            </a>
+                            <a href="@Url.Action("Logout", "Login")" class="btn btn-danger">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="navbar-auth-container">
+                            <div class="navbar-auth-buttons">
+                                <a href="@Url.Action("Login", "Login")" class="btn btn-primary1">
+                                    <i class="fas fa-sign-in-alt"></i> Login
+                                </a>
+                                <a href="@Url.Action("Register", "Login")" class="btn btn-success">
+                                    <i class="fas fa-user-plus"></i> Register
+                                </a>
+                            </div>
+                        </div>
+                    }
                 </div>
-                @if (Session["CurrentUser"] != null)
-                {
-                    var user = Session["CurrentUser"] as sem3.Models.ModelViews.UserM;
-
-                    <a class="nav-link text-dark fw-bold" href="@Url.Action("Index", "Profile")" title="View Profile">
-                        <i class="fas fa-user"></i> Hello, @user.FullName
-                    </a>
-                    <a href="@Url.Action("Logout", "Login")" class="btn btn-danger ms-2">
-                        <i class="fas fa-sign-out-alt"></i> Logout
-                    </a>
-                }
-                else
-                {
-                    <a href="@Url.Action("Login", "Login")" class="btn btn-primary ms-2">
-                        <i class="fas fa-sign-in-alt"></i> Login
-                    </a>
-                    <a href="@Url.Action("Register", "Login")" class="btn btn-success ms-2">
-                        <i class="fas fa-user-plus"></i> Register
-                    </a>
-                }
             </div>
         </div>
     </nav>
@@ -112,13 +126,13 @@
 
                 <div class="col-md-3 mb-4">
                     <h4 class="h6 text-uppercase mb-3">Connect</h4>
-                    <a href="https://www.facebook.com/dxuan1912" target="_blank" class="btn btn-secondary me-2 p-2 rounded-circle">
+                    <a href="https://www.facebook.com/dxuan1912" target="_blank" class="btn btn-primary1 me-2 p-2 rounded-circle">
                         <i class="ri-facebook-fill"></i>
                     </a>
-                    <a href="https://x.com/cXun85826566" target="_blank" class="btn btn-secondary me-2 p-2 rounded-circle">
+                    <a href="https://x.com/cXun85826566" target="_blank" class="btn btn-primary1 me-2 p-2 rounded-circle">
                         <i class="ri-twitter-fill"></i>
                     </a>
-                    <a href="https://www.instagram.com/dxuan1912/" target="_blank" class="btn btn-secondary p-2 rounded-circle">
+                    <a href="https://www.instagram.com/dxuan1912/" target="_blank" class="btn btn-primary1 p-2 rounded-circle">
                         <i class="ri-instagram-line"></i>
                     </a>
                 </div>
