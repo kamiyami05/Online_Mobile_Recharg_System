@@ -5,49 +5,6 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<style>
-    .emoji-rating {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        margin: 10px 0;
-    }
-
-    .emoji-option {
-        cursor: pointer;
-        text-align: center;
-        padding: 10px;
-        border: 2px solid transparent;
-        border-radius: 8px;
-        transition: all 0.3s;
-    }
-
-        .emoji-option:hover {
-            border-color: #007bff;
-        }
-
-        .emoji-option input[type="radio"]:checked + .emoji-option {
-            border-color: #28a745;
-            background-color: #f8f9fa;
-        }
-
-    .emoji {
-        font-size: 2rem;
-        display: block;
-    }
-
-    .rating-text {
-        font-size: 0.8rem;
-        display: block;
-        margin-top: 5px;
-    }
-
-    /* Ẩn radio button mặc định */
-    .emoji-option input[type="radio"] {
-        display: none;
-    }
-</style>
-
 <div class="d-flex justify-content-between align-items-center mb-3">
     <h1>Feedback Management</h1>
 </div>
@@ -76,24 +33,18 @@
                             <td>@fb.Name</td>
                             <td>@fb.Email</td>
                             <td>
-                                @{
-                                    int ratingValue = fb.Rating ?? 0; // Xử lý null
-                                }
-                                @for (int i = 0; i < ratingValue; i++)
+                                @for (int i = 0; i < fb.Rating; i++)
                                 {
                                     <i class="fas fa-star text-warning"></i>
                                 }
-                                @for (int i = ratingValue; i < 5; i++)
+                                @for (int i = (int)fb.Rating; i < 5; i++)
                                 {
                                     <i class="far fa-star text-muted"></i>
                                 }
                             </td>
                             <td>@(fb.SubmitDate.HasValue ? fb.SubmitDate.Value.ToString("yyyy-MM-dd HH:mm") : "")</td>
                             <td>
-                                @if (!string.IsNullOrEmpty(fb.FeedbackText))
-                                {
-                                    @(fb.FeedbackText.Length > 50 ? fb.FeedbackText.Substring(0, 50) + "..." : fb.FeedbackText)
-                                }
+                                @(fb.FeedbackText.Length > 50 ? fb.FeedbackText.Substring(0, 50) + "..." : fb.FeedbackText)
                             </td>
                             <td>
                                 <button type="button" class="btn btn-info btn-sm details-btn"
@@ -153,13 +104,6 @@
     </div>
 </div>
 
-<!-- Logout Button -->
-<div class="mt-4" style="position: fixed; bottom: 20px; left: 20px;">
-    <a href="@Url.Action("Logout", "Login", new { area = "" })" class="btn btn-outline-danger">
-        <i class="fas fa-sign-out-alt"></i> Logout
-    </a>
-</div>
-
 
 @section myscript {
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -168,48 +112,44 @@
     $(document).ready(function () {
 
         $('.details-btn').click(function () {
-    var id = $(this).data('id');
+            var id = $(this).data('id');
 
-    // Reset content
-    $('#detailName').text('Loading...');
-    $('#detailEmail').text('');
-    $('#detailDate').text('');
-    $('#detailRating').html('');
-    $('#detailText').text('');
+            $('#detailName').text('Loading...');
+            $('#detailEmail').text('');
+            $('#detailDate').text('');
+            $('#detailRating').text('');
+            $('#detailText').text('');
 
-    $.ajax({
-        url: '@Url.Action("Details", "Feedbackmgmt")',
-        type: 'GET',
-        data: { id: id },
-        success: function (response) {
-            if (response.success) {
-                var data = response.data;
-                $('#detailName').text(data.name);
-                $('#detailEmail').text(data.email);
-                $('#detailDate').text(data.date);
-                $('#detailText').text(data.text);
+            $.ajax({
+                url: '@Url.Action("Details", "Feedbackmgmt")',
+                type: 'GET',
+                data: { id: id },
+                success: function (response) {
+                    if (response.success) {
+                        var data = response.data;
+                        $('#detailName').text(data.name);
+                        $('#detailEmail').text(data.email);
+                        $('#detailDate').text(data.date);
+                        $('#detailText').text(data.text);
 
-                // Hiển thị rating với xử lý null
-                var ratingHtml = '';
-                var ratingValue = data.rating || 0;
+                        var ratingHtml = '';
+                        for(var i = 0; i < data.rating; i++) {
+                            ratingHtml += '<i class="fas fa-star text-warning"></i> ';
+                        }
+                        for(var i = data.rating; i < 5; i++) {
+                            ratingHtml += '<i class="far fa-star text-muted"></i> ';
+                        }
+                        $('#detailRating').html(ratingHtml);
 
-                for(var i = 0; i < ratingValue; i++) {
-                    ratingHtml += '<i class="fas fa-star text-warning"></i> ';
+                    } else {
+                        alert('Error loading details.');
+                    }
+                },
+                error: function (xhr, status, error) {
+                    alert('Error: 'D + error);
                 }
-                for(var i = ratingValue; i < 5; i++) {
-                    ratingHtml += '<i class="far fa-star text-muted"></i> ';
-                }
-                $('#detailRating').html(ratingHtml);
-
-            } else {
-                alert('Error loading details.');
-            }
-        },
-        error: function (xhr, status, error) {
-            alert('Error: ' + error);
-        }
-    });
-});
+            });
+        });
 
         $('.delete-btn').click(function () {
             if (confirm('Are you sure you want to delete this feedback?')) {

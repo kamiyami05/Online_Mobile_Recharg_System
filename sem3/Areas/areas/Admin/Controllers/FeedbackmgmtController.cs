@@ -28,11 +28,10 @@ namespace sem3.Areas.Admin.Controllers
                 success = true,
                 data = new
                 {
-                    name = feedback.Name ?? "N/A",
-                    email = feedback.Email ?? "N/A",
+                    name = feedback.Name,
+                    email = feedback.Email,
                     date = feedback.SubmitDate.HasValue ? feedback.SubmitDate.Value.ToString("g") : "N/A",
-                    rating = feedback.Rating ?? 0, // Xử lý null
-                    text = feedback.FeedbackText ?? "No feedback text"
+                    text = feedback.FeedbackText
                 }
             }, JsonRequestBehavior.AllowGet);
         }

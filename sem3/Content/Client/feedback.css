@@ -138,6 +138,38 @@
         box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
     }
 
+.cooldown-message {
+    margin-top: 15px;
+    text-align: center;
+}
+
+    .cooldown-message .alert {
+        padding: 12px;
+        border-radius: 8px;
+        background-color: #fff3cd;
+        border: 1px solid #ffeaa7;
+    }
+
+#countdownTimer {
+    font-weight: bold;
+    color: #e74c3c;
+    font-size: 1.1em;
+}
+
+.submit-btn:disabled {
+    background-color: #6c757d !important;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.feedback-info {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #e8f4fd;
+    border-radius: 5px;
+    text-align: center;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .feedback-container {

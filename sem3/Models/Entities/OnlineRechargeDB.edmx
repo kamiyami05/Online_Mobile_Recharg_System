@@ -13,6 +13,7 @@
           <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="PasswordHash" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="MobileNumber" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="ContactPoints">
           <Key>
@@ -33,6 +34,7 @@
           <Property Name="Email" Type="varchar" MaxLength="100" />
           <Property Name="FeedbackText" Type="text" Nullable="false" />
           <Property Name="SubmitDate" Type="datetime" />
+          <Property Name="Rating" Type="int" />
         </EntityType>
         <EntityType Name="PaymentDetails">
           <Key>
@@ -309,6 +311,7 @@
           <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PasswordHash" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MobileNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="ContactPoint">
           <Key>
@@ -330,6 +333,7 @@
           <Property Name="FeedbackText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="SubmitDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="User" Relationship="Self.FK__Feedback__UserID__66603565" FromRole="Feedback" ToRole="Users" />
+          <Property Name="Rating" Type="Int32" />
         </EntityType>
         <EntityType Name="PaymentDetail">
           <Key>
@@ -620,6 +624,7 @@
           <EntitySetMapping Name="AdminUsers">
             <EntityTypeMapping TypeName="OnlineRechargeDBModel.AdminUser">
               <MappingFragment StoreEntitySet="AdminUsers">
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
                 <ScalarProperty Name="AdminID" ColumnName="AdminID" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
@@ -640,6 +645,7 @@
           <EntitySetMapping Name="Feedbacks">
             <EntityTypeMapping TypeName="OnlineRechargeDBModel.Feedback">
               <MappingFragment StoreEntitySet="Feedback">
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
                 <ScalarProperty Name="FeedbackID" ColumnName="FeedbackID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />

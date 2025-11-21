@@ -12,6 +12,16 @@
         <p class="subtitle">We value your opinion. Let us know how we are doing.</p>
     </div>
 
+    <div id="cooldownMessage" class="cooldown-message" style="display: none;">
+        <div class="alert alert-warning">
+            <i class="fas fa-clock"></i>
+            <strong>Please wait:</strong>
+            You can submit another feedback in <span id="countdownTimer">60</span> minutes.
+            <br>
+            <small>Last feedback was submitted recently. Thank you for your enthusiasm!</small>
+        </div>
+    </div>
+
     @if (ViewBag.SuccessMessage != null)
     {
         <div class="alert-success" style="padding: 15px; margin-bottom: 20px; border-radius: 5px; background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb;">
@@ -77,3 +87,6 @@
         <button type="submit" class="submit-btn">Submit Feedback</button>
     }
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="~/Scripts/feedback.js"></script>

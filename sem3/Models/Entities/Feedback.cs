@@ -20,6 +20,7 @@ namespace sem3.Models.Entities
         public string Email { get; set; }
         public string FeedbackText { get; set; }
         public Nullable<System.DateTime> SubmitDate { get; set; }
+        public Nullable<int> Rating { get; set; }
     
         public virtual User User { get; set; }
     }
