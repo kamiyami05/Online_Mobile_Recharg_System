@@ -39,7 +39,6 @@ namespace sem3.Models.Repositories
             existing.Email = user.Email;
             existing.MobileNumber = user.MobileNumber;
             existing.Address = user.Address;
-            existing.Role = user.Role;
 
             _context.SaveChanges();
         }

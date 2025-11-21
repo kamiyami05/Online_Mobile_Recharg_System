@@ -29,7 +29,6 @@ namespace sem3.Controllers
                 Session.Clear();
                 return RedirectToAction("Login", "Login");
             }
-            var role = _db.Roles.FirstOrDefault(r => r.RoleID == userFromDb.RoleID);
 
             var viewModel = new UserM
             {
@@ -39,9 +38,7 @@ namespace sem3.Controllers
                 Email = userFromDb.Email,
                 Address = userFromDb.Address,
                 RegistrationDate = userFromDb.RegistrationDate,
-                PasswordHash = "",
-                RoleID = userFromDb.RoleID,
-                RoleName = role?.RoleName ?? "User"
+                PasswordHash = ""
             };
 
             ViewBag.DoNotDisturbStatus = GetServiceStatus(userFromDb.UserID, "Do Not Disturb");

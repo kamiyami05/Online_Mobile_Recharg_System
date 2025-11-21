@@ -31,7 +31,6 @@ namespace sem3.Models.Entities
         public virtual DbSet<PaymentDetail> PaymentDetails { get; set; }
         public virtual DbSet<PostpaidBill> PostpaidBills { get; set; }
         public virtual DbSet<RechargePlan> RechargePlans { get; set; }
-        public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Service> Services { get; set; }
         public virtual DbSet<SiteContent> SiteContents { get; set; }
         public virtual DbSet<Transaction> Transactions { get; set; }

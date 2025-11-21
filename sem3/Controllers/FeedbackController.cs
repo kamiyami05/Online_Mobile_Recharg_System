@@ -33,7 +33,6 @@ namespace sem3.Controllers
                 {
                     Name = model.Name,
                     Email = model.Email,
-                    Rating = model.Rating,
                     FeedbackText = model.FeedbackText,
                     SubmitDate = DateTime.Now
                 };

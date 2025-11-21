@@ -1,9 +1,10 @@
-﻿using System;
-using System.Linq;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using sem3.Models.Entities;
 using sem3.Models.ModelViews;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
 using User = sem3.Models.ModelViews.UserM;
 
 namespace sem3.Controllers
@@ -26,8 +27,6 @@ namespace sem3.Controllers
 
                 if (user != null && VerifyPassword(model.Password, user.PasswordHash))
                 {
-                    var role = _db.Roles.FirstOrDefault(r => r.RoleID == user.RoleID);
-
                     Session["CurrentUser"] = new User
                     {
                         UserID = user.UserID,
@@ -35,8 +34,6 @@ namespace sem3.Controllers
                         MobileNumber = user.MobileNumber,
                         Email = user.Email,
                         PasswordHash = user.PasswordHash,
-                        RoleID = user.UserID,
-                        RoleName = role?.RoleName ?? "User",
                         Address = user.Address,
                         RegistrationDate = user.RegistrationDate
                     };
@@ -66,7 +63,7 @@ namespace sem3.Controllers
         }
 
         [HttpPost]
-        public ActionResult Register(Register model) // model bây giờ chỉ chứa 3 trường
+        public ActionResult Register(Register model)
         {
             if (ModelState.IsValid)
             {
@@ -81,9 +78,7 @@ namespace sem3.Controllers
                     FullName = model.FullName,
                     MobileNumber = model.Phone,
                     PasswordHash = HashPassword(model.Password),
-                    RoleID = 2,
                     RegistrationDate = DateTime.Now,
-
                     Email = null,
                     Address = null
                 };
@@ -92,14 +87,37 @@ namespace sem3.Controllers
                 try
                 {
                     _db.SaveChanges();
+
+                    // Nếu thành công
+                    return RedirectToAction("Login");
+                }
+                catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+                {
+                    // Lỗi validation
+                    var errorMessages = new List<string>();
+                    foreach (var validationErrors in ex.EntityValidationErrors)
+                    {
+                        foreach (var validationError in validationErrors.ValidationErrors)
+                        {
+                            errorMessages.Add($"Property: {validationError.PropertyName} Error: {validationError.ErrorMessage}");
+                        }
+                    }
+                    ModelState.AddModelError("", "Validation errors: " + string.Join("; ", errorMessages));
+                }
+                catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
+                {
+                    // QUAN TRỌNG: Lấy inner exception sâu nhất
+                    Exception inner = ex;
+                    while (inner.InnerException != null)
+                    {
+                        inner = inner.InnerException;
+                    }
+                    ModelState.AddModelError("", $"Database error: {inner.Message}");
                 }
                 catch (Exception ex)
                 {
-                    ModelState.AddModelError("", $"An error occurred: {ex.Message}");
-                    return View(model);
+                    ModelState.AddModelError("", $"Unexpected error: {ex.Message}");
                 }
-
-                return RedirectToAction("Login");
             }
             return View(model);
         }

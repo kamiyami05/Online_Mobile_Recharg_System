@@ -30,7 +30,6 @@ namespace sem3.Areas.Admin.Controllers
                 {
                     name = feedback.Name,
                     email = feedback.Email,
-                    rating = feedback.Rating,
                     date = feedback.SubmitDate.HasValue ? feedback.SubmitDate.Value.ToString("g") : "N/A",
                     text = feedback.FeedbackText
                 }

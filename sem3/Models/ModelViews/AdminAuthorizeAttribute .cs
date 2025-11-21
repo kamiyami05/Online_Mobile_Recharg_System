@@ -8,7 +8,7 @@ namespace sem3.Models.ModelViews
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             var user = filterContext.HttpContext.Session["CurrentUser"] as UserM;
-            if (user == null || user.RoleID != 1)
+            if (user == null)
             {
                 filterContext.Result = new RedirectResult("/Login/Login");
             }
